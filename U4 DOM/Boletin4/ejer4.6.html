@@ -1,0 +1,44 @@
+<!-- Crea un documento HTML que contenga un cuadro de texto y dos botones de manera que permita añadir elementos de forma dinámica al DOM. 
+Uno de los botones permitirá añadir elementos mediante insertAdjacentHTML y otro botón mediante createElement. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function medianteAdjacent() {
+            // let lista = document.getElementById("lista");
+            // let texto = document.getElementById("nuevo").value;
+            let myDiv = document.getElementById("contenido");
+            let lista = myDiv.querySelector("ul");
+            let texto = document.getElementById("nuevo").value;
+            lista.insertAdjacentHTML("beforeend","<li>" + texto + "</li>");
+        }
+        function medianteCreate() {
+            let myDiv = document.getElementById("contenido");
+            let lista = myDiv.querySelector("ul");
+            let texto = document.getElementById("nuevo").value;
+            let textoAñadir= document.createTextNode(texto);
+            let etiqueta = document.createElement('li');
+            etiqueta.appendChild(textoAñadir);
+            lista.appendChild(etiqueta);
+        }
+    </script>
+    <div id="contenido">
+        <ul id="lista">
+            
+        </ul>
+    </div>
+
+    <form action="" method="post">
+        <label for="añade">Nuevo Texto</label>
+        <input type="text" name="nuevo" id="nuevo">
+        <input type="button" onclick="medianteAdjacent();" value="Añadir elto con insertAdjacentHTML">
+        <input type="button" onclick="medianteCreate();" value="Añadir elto con createElement">
+    </form>
+</body>
+</html>

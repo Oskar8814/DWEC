@@ -1,0 +1,43 @@
+<!-- Crea un documento HTML que permita insertar, borrar, copiar y reemplazar el texto introducido en cuadro de texto. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function añadir() {
+            let texto = document.getElementById("nuevoText").value;
+            var codigoFilas = "<td>" +  texto + "</td>";
+            codigoFilas += "<td><input type='button' onclick='copiarEncima(this);' value='Copiar encima'></td>";
+            codigoFilas += "<td><input type='button' onclick='borrar(this);' value='Borrar'></td>";
+            codigoFilas += "<td><input type='button' onclick='modificar(this);' value='Actualizar'></td>";
+
+            var fila = document.createElement('tr');
+            fila.innerHTML=codigoFilas;
+            document.getElementById("tabla").appendChild(fila);
+        }
+        function copiarEncima(button) {
+            let filaActual = button.parentElement.parentElement;
+            let filaAcopiar = button.parentElement.parentElement.cloneNode(true);
+            document.getElementById('tabla').insertBefore(filaAcopiar,filaActual)
+        }
+        function borrar(button) {
+            let filaABorrar = button.parentElement.parentElement;
+            document.getElementById('tabla').removeChild(filaABorrar); 
+        }
+        function modificar(button){
+            let filaAmodificar = button.parentElement.parentElement;
+            let texto = document.getElementById("nuevoText").value;
+            filaAmodificar.getElementsByTagName("td")[0].innerHTML = texto;
+        }
+    </script>
+    <span>Texto</span>
+    <input type="text" name="" id="nuevoText">
+    <input type="button" onclick="añadir();" value="Insertar texto nuevo">
+    <table id="tabla" style="border:1px dashed greed;"></table>
+</body>
+</html>

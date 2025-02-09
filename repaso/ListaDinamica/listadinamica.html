@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista dinámica</h1>
+    <ul id="listaDinamica"></ul>
+    <hr>
+    <form action="">
+        <label for="texto">Nuevo Texto</label>
+        <input type="text" name="texto" id="texto">
+        <label for="color">Color</label>
+        <select name="color" id="color">
+            <option value="blue">Azul</option>
+            <option value="aquamarine">Cyan</option>
+            <option value="green">Verde</option>
+            <option value="black">Negro</option>
+        </select>
+        <label for="tamaño">Tamaño</label>
+        <select name="tamaño" id="tamaño">
+            <option value="8px">8</option>
+            <option value="16px">16</option>
+            <option value="20px">20</option>
+        </select>
+        <button type="button" id="boton">Añadir elto</button>
+        <button type="button" id="ocultar">ocultar</button>
+    </form>
+
+    <script>
+        let botonElto = document.getElementById('boton');
+        let btnocultar = document.getElementById('ocultar');
+        botonElto.addEventListener('click', añadirElto, true);
+        btnocultar.addEventListener('click', ocultar, true);
+
+        function añadirElto() {
+            let lista = document.getElementById('listaDinamica');
+            let texto = document.getElementById('texto').value;
+            let color = document.getElementById('color').value;
+            let tamaño = document.getElementById('tamaño').value;
+
+            let li = document.createElement("li");
+            
+            li.innerHTML=texto;
+            li.style.color=color;
+            li.style.fontSize=tamaño;
+
+            lista.appendChild(li);
+
+        }
+        
+        function ocultar() {
+            let lista = document.getElementById('listaDinamica');
+            let button = document.getElementById('ocultar');
+            
+            if (button.textContent == "ocultar") {
+                console.log("a")
+                lista.setAttribute("style","visibility: hidden;")
+                button.innerHTML = 'Mostrar';
+            }else{
+                console.log("b")
+                lista.setAttribute("style","visibility: visible;")
+                button.innerHTML = 'ocultar';
+            }   
+        }
+    </script>
+</body>
+</html>

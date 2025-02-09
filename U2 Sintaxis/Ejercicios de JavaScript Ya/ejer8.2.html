@@ -1,0 +1,29 @@
+<!--  Se ingresa por teclado un valor entero, mostrar una leyenda que indique si el número es positivo, cero o negativo.  -->
+<!-- 8. Apartado 2) Preparar el programa para que trabaje con números decimales -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Valor del número</h1>
+    <div id="contenido"></div>
+    <script>
+        let numero = Number(prompt("Introduce un número:"));
+        if(numero>0){
+            volcarTextoWeb("El número es positivo")
+        }else if(numero==0){
+            volcarTextoWeb("El número es 0")
+        }else if(numero<0){
+            volcarTextoWeb("El número es negativo")
+        }
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>d

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista dinámica</h1>
+    <ul id="lista"></ul>
+    <form action="">
+        <label for="">Nuevo texto:</label>
+        <input type="text" name="texto" id="texto">
+        <label for="">Color:</label>
+        <select name="color" id="color">
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="blue">Azul</option>
+        </select>
+        <label for="">Tamaño:</label>
+        <select name="tamaño" id="tamaño">
+            <option value="12px">12</option>
+            <option value="14px">14</option>
+            <option value="16px">16</option>
+            <option value="24px">24</option>
+        </select>
+        <input type="button" onclick="añadir()" value="Añadir elt">
+    </form>
+    <button id="botonOcultar" onclick="ocultar()">Ocultar</button>
+
+    <script>
+        function añadir() {
+            let elt = document.getElementById("texto").value;
+            let colorElegido = document.getElementById("color").value;
+            let tamañoElegido = document.getElementById("tamaño").value;
+
+            let lista = document.querySelector("#lista");
+            let etiqli = document.createElement('li');
+            etiqli.innerHTML = elt;
+            etiqli.style.color = colorElegido;
+            etiqli.style.fontSize = tamañoElegido;
+            lista.appendChild(etiqli);
+        }
+        function ocultar() {
+            let lista = document.querySelector("#lista");
+            let btnOcultar = document.getElementById("botonOcultar");
+
+            if (btnOcultar.innerHTML === "Visible") {
+                btnOcultar.innerHTML = "Ocultar";
+                lista.style.visibility = "visible";
+            } else {
+                btnOcultar.innerHTML = "Visible";
+                lista.style.visibility = "hidden";
+            }
+        }
+
+        // function ocultar() {
+        //     let lista = document.getElementById('lista');
+        //     let boton = document.getElementById('ocultar');
+
+        //     if (boton.value === 'Ocultar') {
+        //         lista.style.display = 'none';
+        //         boton.value = 'Mostrar';
+        //     } else {
+        //         lista.style.display = '';
+        //         boton.value = 'Ocultar';
+        //     }
+        // }
+    </script>
+</body>
+</html>

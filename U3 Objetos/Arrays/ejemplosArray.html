@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejercicios clase Date</h1>
+	<h2>Pulsa F12 para ver la consola de depuración</h2>
+    <script>
+        console.log(`----------------- EJ1 ----------------------------`);
+        let array1 = new Array(5);
+        console.log(array1);
+        array1[0] = 1;
+        array1[1] = "hola";
+        array1[5] = "adios";
+        Array.isArray(array1);//Comprobar si el objeto array1 es un Array
+        array1[16] = {marca: "Opel" , modelo: "vectra" };
+        console.log(array1);
+
+        let array3 = [3,4,"hola",true];//Array denso
+        let array4 = [3,,"hola",true];//Array disperso
+        console.log(array3);
+        
+        let notas1 = [8.2, 6.1, 5.0,, 4.7];
+        let media = calcularMedia(notas1);
+        console.log(media);
+        //METODOS
+        console.log(`----------------- EJ--Metodos ----------------------------`);
+        function calcularMedia (notas){ //Funcion para calcular la media. Parametros : notas(array con notas)
+            let suma = 0;
+            let contador = 0 ;//Contador de elementos no undefined
+            for (let index = 0; index < notas.length; index++) {//Tener cuidado al usar for i con array ya que si es dispersa nos va a dar un NaN cmo resultado al coger el valor vacio.
+                if (notas[index]!=undefined) {
+                    suma += notas[index];
+                    contador++;
+                }
+            }
+            let media = suma/contador;
+            media = redondearDecimales(media,2);
+            return media;
+        }
+        
+        function redondearDecimales(numero,decimales){
+            return  Math.round(numero * Math.pow(10,decimales)) / Math.pow(10,decimales);
+        }
+
+        //Metodo push() Añade un elemento
+        console.log(`----------------- EJ Metodo push() ----------------------------`);
+            let numeros = [5,6,7];
+            numeros.push(8);
+            console.log(numeros);
+            numeros.push(9,"hola",false);
+            console.log(numeros);
+
+        //Metodo pop() elimina el ultimo elemento shift() hace lo mismo?¿
+        console.log(`----------------- EJ Metodo push() ----------------------------`);
+            numeros.pop();
+            console.log(numeros)
+            let dato = numeros.pop();
+            console.log(dato);
+
+        //Instruccion delete() elimina el valor pero conservado el hueco combirtiendo al array en disperso si no lo fuese.
+        console.log(`----------------- EJ Instruccion delete ----------------------------`);
+        delete numeros[2];
+        console.log(numeros);
+
+        //Metodo sort()
+        console.log(`----------------- EJ Metodo sort() ----------------------------`); //Cuidado ya qe sort combierte el valor en string para ordenarlo.
+
+        let prov = ["Huesca","Zaragoza", "Teruel", "Cadiz"];
+        console.log(prov.sort());
+        console.log(prov.reverse());
+
+        let misNumeros = [23,42,16,15,4,8];
+        console.log(misNumeros.sort());
+        
+        console.log(misNumeros.sort((n1,n2)=>n1-n2)); //Asi ordena los numeros gracias a una función comparadora.
+        console.log(misNumeros.sort((n1,n2)=>n1-n2).reverse());
+
+        //Metodo splice() sirve para añadir o eliminar valores e un array primer parametro es el indice, segundo la cantidad de valores y le 3º poniendo en el 2º parametro un 0 añadimos los valores que deseemos.
+        console.log(`----------------- EJ Metodo splice() ----------------------------`);
+        misNumeros.splice(2,3);//Eliminamos 3 valores desde ell index 2
+        console.log(misNumeros); 
+        
+        misNumeros.splice(1,0,5,7); //Despues del valor 42 añadimos el valor 5 y 7
+        console.log(misNumeros); 
+        
+
+        //Metodo slide() nos devuelve los valores de un array indicandole desde la posicion inicial que le indiqemos hasta otra posicion tamb indicada
+        console.log(`----------------- EJ Metodo slice() ----------------------------`);
+        let miarray = [5,8,3,"hola",8];
+        let subarray = miarray.slice(2,4);//Nos devolvera los valores desde index 2 hasta 4 que son el 3 y "hola";
+        console.log(subarray);
+
+        //Metodo join() devuelve los valores de un array en un string Le pasamos como parametro el separador que deseemos.
+        console.log(`----------------- EJ Metodo join() ----------------------------`)
+        console.log(miarray.join(","));
+
+        //Metodo from()
+        console.log(`----------------- EJ Metodo from() ----------------------------`)
+        console.log(Array.from("HIEIOFEOAIHFIOHAFIOFHOIAE"));
+
+        //For each para iterar un array
+        console.log(`----------------- For Each ----------------------------`)
+
+        for (let elto of miarray){
+            console.log(elto);
+        }
+
+        console.log(`----------------- EJ Metodo for in() ----------------------------`)
+
+        for (let index in miarray){
+            console.log(index + "=>" + miarray[index])
+        }
+
+        console.log(`----------------- EJ FOREACH FUNCTION() ----------------------------`)
+
+        miarray.forEach(function(item, index){
+            console.log(index + "=>" + item);
+        })
+
+        console.log(`----------------- EJ Metodo filtrado filter() ----------------------------`)
+        let arrayNumeros = [3,5,6,7,8,9];
+        let arrayFiltrado = [];
+
+        for (let i = 0; i < arrayNumeros.length; i++) {
+            if (arrayNumeros[i] % 2 == 0){
+                arrayFiltrado[i] = arrayNumeros[i];
+            }
+        }
+
+        let arrayF = arrayNumeros.filter((numero)=>numero % 2 == 0);
+        console.log(arrayF);
+
+        function comprobarNumero(numero){
+            if (numero % 2 == 0) return true;
+        }
+        //Funcion anonima con arrow que comprueba si es par 
+        (numero)=>numero % 2 == 0;
+
+        console.log(`----------------- EJ Metodo every() ----------------------------`)
+        let comprueba = arrayNumeros.every((elto)=> elto > 5);
+        console.log(comprueba);
+
+        let comprueba2 = arrayNumeros.some((elto)=> elto >5);
+        console.log(comprueba2);
+
+        console.log(`----------------- EJ Metodo map() ----------------------------`)
+        let cuadrados = arrayNumeros.map((elto)=>Math.sqrt(elto));
+        console.log(cuadrados);
+        
+        let prov2 = ["Huesca","Zaragoza", "Teruel", "Cadiz"];
+        let mayusculas = prov2.map((elto)=>elto.toLocaleUpperCase());
+        console.log(mayusculas);
+
+        console.log(`----------------- EJ Metodo find() ----------------------------`)
+        let elto = arrayNumeros.find((elto)=>elto>7);//Muestra el primer elemento encontrado con esa 
+        console.log(elto);
+        // Para ordenador números hay que usar una función comparadora
+</script>
+</body>
+</html>

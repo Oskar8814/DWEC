@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr,td,th,table{
+            border: 1px solid black;
+        }
+        form{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <p>Añade nuevos articulos al carrito</p>
+    <p>Cierra la ventana y vuelve a abrirla para comprobar el resultado</p>
+    <form action="" method="post">
+        <label for="">Articulo:</label>
+        <input type="text" name="articulo" id="articulo">
+        <label for="">Cantidad:</label>
+        <input type="text" name="cantidad" id="cantidad">
+        <input type="button" value="Añadir" id="añadir">
+    </form>
+
+    <form action="" method="post">
+        <input type="button" value="Vaciar" id="vaciar">
+    </form>
+    <br><br>
+    <table id="carrito"></table>
+
+    <script>
+        let articulos = [];
+        addEventListener("load", iniciar);
+        function iniciar() {
+
+            //Si localStorage ya tiene objetos articulo lo guardamos en el array de articulos
+            if (localStorage.articulos) {
+                articulos = JSON.parse(localStorage.articulos);
+                rellenar();
+            }
+            
+            //Creamos el evento al boton del formulario para añadir
+            let btnAgregarArticulo = document.getElementById("añadir");
+            btnAgregarArticulo.addEventListener("click",agregarArticulo);
+
+            //Creamos el eventao al boton del formulario vaciar
+            let btnVaciarCarro =  document.getElementById("vaciar");
+            btnVaciarCarro.addEventListener("click",vaciarCarro);
+
+            //Rellena la tabla al cargar la pagina
+            rellenar();
+
+        }
+
+        function agregarArticulo() {
+
+            //recogemos los valores introducidos en el formulario por el usuario y los cargamos en el array de articulos
+            articulos.push({
+                articulo: document.getElementById("articulo").value,
+                cantidad: document.getElementById("cantidad").value
+            });
+
+            //Guardar los cambios en el localStorage
+            localStorage.articulos = JSON.stringify(articulos);
+
+            //Actualizar la tabla
+            rellenar();
+        }
+
+        function vaciarCarro() {
+            articulos = []; 
+
+            //Guardar los cambios en el localStorage
+            localStorage.articulos = JSON.stringify(articulos);
+
+            //Actualizar la tabla vacia
+            rellenar();
+
+        }
+
+        function rellenar() {
+            
+            let tabla = document.getElementById("carrito");
+
+            tabla.innerHTML="";
+
+            let filaEnc = document.createElement('tr');
+            let celdaArt = document.createElement('td');
+            let celdaCan = document.createElement('td');
+            celdaArt.innerHTML ="Articulo";
+            celdaCan.innerHTML ="Cantidad";
+            filaEnc.appendChild(celdaArt);
+            filaEnc.appendChild(celdaCan);
+            tabla.appendChild(filaEnc);
+
+            for (const element of articulos) {
+                let fila = document.createElement('tr');
+                let celdaArticulo = document.createElement('td');
+                let celdaCantidad = document.createElement('td');
+                celdaArticulo.innerHTML = element.articulo;
+                celdaCantidad.innerHTML = element.cantidad;
+
+                fila.appendChild(celdaArticulo);
+                fila.appendChild(celdaCantidad);
+
+                tabla.appendChild(fila);
+            }
+        }
+
+    </script>
+</body>
+</html>

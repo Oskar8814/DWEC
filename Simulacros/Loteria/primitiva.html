@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Combinacion Ganadora</h1>
+    <input type="button" onclick="ganador()" value="Genera Combinacion Ganadora">
+    <!-- <input type="button" onclick="crearTabla()" value="Genera Tabla"> -->
+    <table id="tabla"></table>
+
+    <script>
+        addEventListener("load",crearTabla);
+
+        function bonoloto() {
+            let numeros = [];
+            while (numeros.length < 6) {
+                let num = Math.floor(Math.random() * 49) + 1;
+                if (!numeros.includes(num)) {
+                    numeros.push(num);
+                }
+            }
+            return numeros;
+        }
+
+        function ganador() {
+            let tabla = document.getElementById("tabla");
+            let combGandora = bonoloto();
+
+
+            for (let i = 1; i <= 49; i++) {
+                let td = document.getElementById(i.toString());
+                let valor = parseInt(td.innerHTML);
+
+                if (combGandora.includes(valor))  {
+                    td.setAttribute('class', 'forma1');
+                } else {
+                    td.setAttribute('class', 'forma2');
+                }
+                
+            }
+
+
+        }
+
+        //Funcion para crear una tabla 7x7 estatica y 
+        function crearTabla() {
+            const tabla = document.getElementById("tabla");
+            let id = 1;
+
+            for (let i = 0; i < 7; i++) { // Filas
+                const fila = document.createElement("tr");
+                for (let j = 0; j < 7; j++) { // Columnas
+                    const celda = document.createElement("td");
+                    celda.setAttribute('class','forma2'); //Le añadimos de forma pred la clase en negro
+                    celda.id = id; // Asigna un id numérico único
+                    celda.textContent = id; // Muestra el id dentro de la celda
+                    fila.appendChild(celda);
+                    id++;
+                }
+                tabla.appendChild(fila);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!-- Escribir un programa en el cual se ingresen cuatro números, calcular e informar la suma de los dos primeros y el producto del tercero y el cuarto.  -->
+<!-- Apartado 2) Haz que también se muestre el producto de los cuatro números -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Resultados</h1>
+<div id="contenido"></div>
+<body>
+    <script>
+        let numero1 = prompt("Ingresa el número 1: ");
+        let numero2 = prompt("Ingresa el número 2: ");
+        let numero3 = prompt("Ingresa el número 3: ");
+        let numero4 = prompt("Ingresa el número 4: ");
+        let suma = numero1 + numero2;
+        let mult1 = numero3 * numero4;
+        let mult2 = numero1 * numero2 * numero3 * numero4;
+
+        volcarTextoWeb("Resultado de la suma de "+ numero1 +" y "+ numero2 + " es: " + suma);
+        volcarTextoWeb("Resultado de la multiplicación de " + numero3 + " y "+ numero4 + " es: " + mult1);
+        volcarTextoWeb("Resultado de la multiplicación de " + numero1 + " , " + numero2 + " , " + numero3 + " y "+ numero4 + " es: " + mult2);
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

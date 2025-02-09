@@ -1,0 +1,37 @@
+<!-- Realizar un programa que lea por teclado dos números, si el primero es mayor al segundo informar su suma y diferencia, 
+en caso contrario informar el producto y la división del primero respecto al segundo.  -->
+<!-- 7. Apartado 1) Preparar el programa para que trabaje con números decimales -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Resultados</h1>
+    <div id="contenido"></div>
+    <script>
+        let decimal1 = Number (prompt("Ingresa un número:"));
+        let decimal2 = Number (prompt("Ingresa otro número:"));
+
+        if(decimal1>decimal2){
+            let suma = decimal1 + decimal2;
+            let diferencia = decimal1 - decimal2;
+            volcarTextoWeb("El resultadod de la suma es: " + suma);
+            volcarTextoWeb("El resultadod de la resta es: " + diferencia);
+        }else if(decimal1<decimal2){
+            let mult = decimal1 * decimal2;
+            let div = decimal1 / decimal2;
+            volcarTextoWeb("El resultado de la multiplicación es: " + mult);
+            volcarTextoWeb("El resultado de la división es: " + div);
+        }else{
+            volcarTextoWeb("Ambos números son iguales.")
+        }
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

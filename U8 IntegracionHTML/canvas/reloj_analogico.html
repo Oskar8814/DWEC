@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Analógico</title>
+</head>
+
+<body>
+    <h1>Reloj analógico</h1>
+    <canvas id="canvas" style="border:1px solid" width="200px" height="200"></canvas>
+    <script>
+
+        class Aguja {
+            constructor(radio) {
+                this._valor = 0;
+                this._radio = radio;
+            }
+
+            get valor() {
+                return this._valor;
+            }
+
+            set valor(valor) {
+                if (this.validarValor(valor)) this._valor = valor;
+                else throw new Error("Valor fuera de rango");
+            }
+
+            get radio() {
+                return this._radio;
+            }
+
+            set radio(valor) {
+                this._radio = valor;
+            }
+
+            // Este método debe ser implementado en las subclases
+            get angulo() {
+                throw new Error("El método 'angulo' debe ser implementado por la subclase");
+            }
+
+            get coordenadasCartesianas() {
+                return {
+                    x: this._radio * Math.cos(grad2rad(this.angulo)),
+                    y: this._radio * Math.sin(grad2rad(this.angulo)),
+                };
+            }
+
+            validarValor(valor) {
+                return valor >= 0 && valor < 60;
+            }
+        }
+
+        class AgujaSecundero extends Aguja {
+            get angulo() {
+                return 90 - this._valor * 360 / 60;
+            }
+        }
+
+        class AgujaMinutero extends Aguja {
+            get angulo() {
+                return 90 - this._valor * 360 / 60;
+            }
+        }
+
+        class AgujaHorario extends Aguja {
+            validarValor(valor) {
+                return valor >= 0 && valor < 12;
+            }
+
+            get angulo() {
+                return 90 - this._valor * 360 / 12;
+            }
+        }
+
+        const secundero = new AgujaSecundero(80);
+        const minutero = new AgujaMinutero(70);
+        const horario = new AgujaHorario(50);
+        let hora;
+
+        addEventListener('load', iniciar);
+
+        function iniciar() {
+            setInterval(dibujar, 1000);
+        }
+
+        function grad2rad(grados) {
+            return grados / 180 * Math.PI;
+        }
+
+        function dibujar() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            hora = new Date();
+            secundero.valor = hora.getSeconds();
+            minutero.valor = hora.getMinutes();
+            horario.valor = hora.getHours() % 12 + hora.getMinutes() / 60; // Incluimos la fracción de minutos
+
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.translate(100, 100);
+            ctx.scale(1, -1);
+
+            // Dibujamos la aguja de las horas
+            dibujarAguja(ctx, horario.coordenadasCartesianas, 'black', 6);
+            // Dibujamos la aguja de los minutos
+            dibujarAguja(ctx, minutero.coordenadasCartesianas, 'green', 4);
+            // Dibujamos la aguja de los segundos
+            dibujarAguja(ctx, secundero.coordenadasCartesianas, 'blue', 2);
+        }
+
+        function dibujarAguja(ctx, coordenadas, color, grosor) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = grosor;
+            ctx.moveTo(0, 0);
+            ctx.lineTo(coordenadas.x, coordenadas.y);
+            ctx.stroke();
+        }
+    </script>
+</body>
+
+</html>

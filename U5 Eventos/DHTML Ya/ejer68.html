@@ -1,0 +1,34 @@
+<!-- Evento: change
+PROBLEMA
+Confeccionar un formulario que muestre un checkbox que cuando se tilde active un botón 
+(el checkbox debe mostrar un mensaje que diga : "Confirma los términos y condiciones?") -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="checkbox" name="condiciones" id="condiciones">Confirma los términos y condiciones?
+        <input type="button" id="confirmar" name="confirmar" value="Confirmar" disabled>
+    </form>
+    <script>
+        addEventListener('load', inicio);
+        function inicio() {
+            document.querySelector("#condiciones").addEventListener('change', pulsar);
+        }
+
+        function pulsar() {
+            if (document.getElementById('condiciones').checked) {
+                document.querySelector('#confirmar').disabled = false;
+            }else{
+                document.querySelector('#confirmar').disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>

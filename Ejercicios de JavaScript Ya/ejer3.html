@@ -1,0 +1,34 @@
+<!-- Confeccionar una programa en JavaScript que defina e inicialice una variable de tipo cadena de caracteres donde almacenemos el nombre de un empleado 
+y otra variable de tipo entera donde almacenar el sueldo. Imprimir cada variable en una línea distinta en pantalla. -->
+<!-- Añade también dos variables más, una que contenga un dato booleano y otra con un número decimal. Haz que las variables se vuelquen también a la consola de depuración. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Datos del Empleado</h1>
+    <div id="contenido"></div>
+    <script>
+        let cadena = "Antonio";
+        let sueldo = 1500;
+        let booleano = true;
+        let numero = 3.1486;
+        
+        console.log (cadena);
+        console.log (sueldo);
+        console.log (booleano);
+        console.log (numero);
+        
+        volcarTextoWeb("Nombre: " + cadena);
+        volcarTextoWeb("Salario: " + sueldo);
+        
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+        
+    </script>
+</body>
+</html>

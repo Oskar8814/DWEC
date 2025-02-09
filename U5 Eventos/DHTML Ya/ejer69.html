@@ -1,0 +1,45 @@
+<!-- Problema
+Confeccionar un formulario que muestre dos controles de tipo text. 
+El que está con foco mostrar su texto de color rojo y aquel que no está seleccionado el texto se debe mostrar de color negro. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" method="post">
+        <input type="text" name="text1" id="text1">
+        <input type="text" name="text2" id="text2">
+    </form>
+
+    <script>
+        addEventListener('load',inicio);
+
+        function inicio() {
+            document.querySelector('#text1').addEventListener('focus',cambiaColorfoco1);
+            document.querySelector('#text2').addEventListener('focus',cambiaColorfoco2);
+            document.querySelector('#text1').addEventListener('blur',cambiaColorPierdefoco1);
+            document.querySelector('#text2').addEventListener('blur',cambiaColorPierdefoco2);
+        }
+
+        function cambiaColorfoco1() {
+            document.querySelector('#text1').style.color= 'red';
+        }
+        function cambiaColorfoco2() {
+            document.querySelector('#text2').style.color= 'red';
+        }
+        function cambiaColorPierdefoco1(params) {
+            document.querySelector('#text1').style.color= 'black';
+            
+        }
+        function cambiaColorPierdefoco2(params) {
+            document.querySelector('#text2').style.color= 'black';
+            
+        }
+    </script>
+</body>
+</html>

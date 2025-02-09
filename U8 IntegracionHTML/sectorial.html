@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+
+    <!-- SCRIPT -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            const resultados = [
+                {
+                    año: 2024, ciclistas: [{ mes: "Enero", cantidad: 22 }, { mes: "Febrero", cantidad: 25 }, { mes: "Marzo", cantidad: 33 }, { mes: "Abril", cantidad: 44 }, { mes: "Mayo", cantidad: 42 },
+                    { mes: "Junio", cantidad: 31 }, { mes: "Julio", cantidad: 21 }, { mes: "Agosto", cantidad: 13 }, { mes: "Septiembre", cantidad: 30 }, { mes: "Octubre", cantidad: 44 }, { mes: "Noviembre", cantidad: 28 },
+                    { mes: "Diciembre", cantidad: 23 }]
+                },
+            ];
+
+            // Inicializa el array que contendrá los datos para la tabla
+            let dataArray = [["Mes", "Cantidad"]];
+
+            for (const resultado of resultados) {
+                for (const ciclista of resultado.ciclistas) { 
+                    dataArray.push([ciclista.mes, ciclista.cantidad]); // Añadimos cada par mes-cantidad al array
+                }
+            }
+
+            var data = google.visualization.arrayToDataTable(dataArray);
+
+            var options = {
+                title: "Ciclistas",
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(
+                document.getElementById("piechart_3d")
+            );
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+
+</html>

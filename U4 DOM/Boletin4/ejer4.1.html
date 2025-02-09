@@ -1,0 +1,40 @@
+<!-- Actividad 4.10 (activ_4.10.html)
+Crea un documento html que contenga una sección div y un botón. 
+Cada vez que se pulse el botón debe añadirse un nuevo párrafo al div con un número consecutivo comenzando en 1. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 4.10</title>
+    <style>
+        #section{
+            background-color: bisque;
+            max-width: 450px;
+            border-radius: 3px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let aux = 0;
+
+        function insertarTexto() {
+            aux ++;
+            let myDiv = document.getElementById("section");
+            let etiqueta = document.createElement('p');
+            let texto = document.createTextNode("Párrafo número " + aux);
+            etiqueta.appendChild(texto);
+            myDiv.appendChild(etiqueta);
+        }
+    </script>
+    <div id="section">
+        <p>Aquí se añaden los text</p>
+    </div>
+    <form action="">
+        <input type="button" onclick="insertarTexto()" value="Insertar">
+    </form>
+</body>
+</html>

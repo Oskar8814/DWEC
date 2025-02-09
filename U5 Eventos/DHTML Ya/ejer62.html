@@ -1,0 +1,42 @@
+<!-- 62. Eventos: load y DOMContentLoaded 
+Implementar un formulario que solicite la carga del nombre de usuario y su clave.
+Mostrar un mensaje si no se ingresan datos en alguno de los dos controles. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <form method="post" action="#" id="formulario1">
+        Ingrese nombre:
+        <input type="text" id="usuario" name="usuario" size="20">
+        <br> Ingrese clave:
+        <input type="password" id="clave" name="clave" size="20">
+        <br>
+        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+    </form>
+
+    <script>
+        window.addEventListener('load', inicio);
+
+        function inicio() {
+            document.getElementById("formulario1").addEventListener('submit', validar);
+        }
+
+        function validar(evt) {
+            let usuario = document.getElementById("usuario").value;
+            let clave = document.getElementById("clave").value;
+            if (usuario.length == 0 || clave.length == 0) {
+                alert('El nombre de usuario o clave está vacío');
+                evt.preventDefault();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

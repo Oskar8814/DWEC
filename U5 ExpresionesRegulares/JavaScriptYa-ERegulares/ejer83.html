@@ -1,0 +1,40 @@
+
+<!-- 83 Confeccionar una expresión regular que valide el ingreso
+del nombre de un día de la semana, un espacio y un número de 1 o 2 dígitos.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion"></div>
+    <form action="">
+        <label for="dia">Ingresa el nombre de la semana y su número:</label>
+        <input type="text" name="dia" id="dia">
+        <input type="button" value="Comprobar" id="comprobar">
+    </form>
+
+    <script>
+        let patronDia = /^(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\s(([012]\d)|(3[01]))$/i;
+
+        //Apuntar al DOM necesario
+        let inpDia = document.querySelector("#dia");
+        let comprobar = document.querySelector("#comprobar");
+        let validacion = document.getElementById("validacion");
+
+        //Anadir evento con js
+        comprobar.addEventListener("click", comprobacion);
+        function comprobacion() {
+            let dia = inpDia.value;
+            if (patronDia.test(dia)) {
+                validacion.innerHTML = "Correcto";
+            } else {
+                validacion.innerHTML = "Incorrecto";
+            }
+        }
+    </script>
+</body>
+</html>

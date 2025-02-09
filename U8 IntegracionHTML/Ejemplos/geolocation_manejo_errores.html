@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"></head><body>
+
+<p>Pulsa el boton para obtener tus coordenadas.</p>
+
+<button onclick="getLocation()">Obtener coordenadas</button>
+
+<p id="demo"><br></p>
+
+<script>
+var demo = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    demo.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  demo.innerHTML = "Latitud: " + position.coords.latitude + "<br>Longitud : " + position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      demo.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      demo.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      demo.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      demo.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+</script>
+
+</body></html>

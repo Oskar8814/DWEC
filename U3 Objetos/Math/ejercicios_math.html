@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.Calcula el valor absoluto de los siguientes números: 3, -5, 8, -3.5, 12.2
+        console.log(`----------------- EJ1 ----------------------------`);
+        let a = 3;
+        let b = -5;
+        let c = 8;
+        let d = -3.5;
+        let e = 12.2;
+        console.log(Math.abs(a));
+        console.log(Math.abs(b));
+        console.log(Math.abs(c));
+        console.log(Math.abs(d));
+        console.log(Math.abs(e));
+
+        // 2.Muestra por la consola el valor de la constante PI definida en la clase Math.
+        console.log(`----------------- EJ2 ----------------------------`); 
+        console.log(Math.PI);
+
+        //3. Calcula el coseno de 30º. Haz el mismo cálculo usando la calculadora de Windows. Compara ambos resultados y si no coinciden investiga el motivo y corrige tu código de JS. 
+        //Calcula el seno de 45º en JS y con la calculadora y comprueba que coincidan. Calcula el coseno de /3 radianes y comprueba con la calculadora que es correcto.
+        console.log(`----------------- EJ3 ----------------------------`);
+        let grados = 30;
+        let radianes = grados2radianes(grados);
+        console.log(Math.cos(radianes));
+
+        let grados2 = 45;
+        let rad = grados2radianes(grados2);
+        console.log(Math.sin(rad));
+
+        let num = Math.PI / 3;
+        console.log(Math.cos(num));
+
+        // 4. Calcula e3
+        console.log(`----------------- EJ4 ----------------------------`);
+        let exp = 3;
+        console.log(Math.exp(exp));
+        console.log(Math.pow(Math.E,exp));
+        
+        // 5.Calcula  log 12.5 ( logaritmo en base 10). Calcula ln 15.7 (logaritmo neperiano). Compara ambos resultados con la calculadora.
+        console.log(`----------------- EJ5 ----------------------------`);
+        let num1 = Math.log10(12.5);
+        let num2 = Math.log(15.7);
+        console.log(num1);
+        console.log(num2);
+
+        // 6. Calcula 128.12 raiz cuadrada comparando con la calculadora que el resultado es correcto.
+        console.log(`----------------- EJ6 ----------------------------`);
+        let num3 = 128.12
+        console.log(Math.sqrt(num3));
+
+
+        // 7.Redondea los siguientes números al entero más cercano: 2.7, -2.7, 12.4, 12.5, -0.6, 0.6
+        console.log(`----------------- EJ7 ----------------------------`);
+        let a7 = 2.7;
+        let b7 = -2.7;
+        let c7 = 12.4;
+        let d7 = 12.5;
+        let e7 = -0.6;
+        let f7 = 0.6;
+
+        console.log(Math.round(a7));
+        console.log(Math.round(b7));
+        console.log(Math.round(c7));
+        console.log(Math.round(d7));
+        console.log(Math.round(e7));
+        console.log(Math.round(f7));
+
+        // 8. Calcula el techo (ceil) de los siguientes números: 2.7, -2.7, 12.4, 12.5, -0.6, 0.6
+        console.log(`----------------- EJ8 ----------------------------`);
+
+        console.log(Math.ceil(a7));
+        console.log(Math.ceil(b7));
+        console.log(Math.ceil(c7));
+        console.log(Math.ceil(d7));
+        console.log(Math.ceil(e7));
+        console.log(Math.ceil(f7));
+
+        // 9. Calcula el suelo (floor) de los siguientes números: 2.7, -2.7, 12.4, 12.5, -0.6, 0.6
+        console.log(`----------------- EJ9 ----------------------------`);
+        console.log(Math.floor(a7));
+        console.log(Math.floor(b7));
+        console.log(Math.floor(c7));
+        console.log(Math.floor(d7));
+        console.log(Math.floor(e7));
+        console.log(Math.floor(f7));
+
+        // 10. Calcula el menor de los valores de estos pares de números: (-8, 7), (12, 5), (-12, 5) 
+        console.log(`----------------- EJ10 ----------------------------`);
+        let menor1 = Math.min(-8,7);
+        let menor2 = Math.min(12,5);
+        let menor3 = Math.min(-12,5);
+        console.log(menor1);
+        console.log(menor2);
+        console.log(menor3);
+
+        //11. Calcula el mayor de los valores de estos pares de números: (-8, 7), (12, 5), (-12, 5)
+        console.log(`----------------- EJ11 ----------------------------`);
+        let mayor1 = Math.max(-8,7);
+        let mayor2 = Math.max(12,5);
+        let mayor3 = Math.max(-12,5);
+        console.log(mayor1);
+        console.log(mayor2);
+        console.log(mayor3);
+        
+        //12. Queremos simular el lanzamiento de un dado. Genera un número aleatorio entre 1 y 6.
+        
+        console.log(`----------------- EJ12 ----------------------------`);
+        let dado = Math.floor(Math.random()*7);
+        console.log(dado);
+        
+        // 13.Genera un número aleatorio entre 26 y 79.
+        // var x = Math.floor(Math.random()*(max-min+1)+min); 
+        console.log(`----------------- EJ13 ----------------------------`);
+        let dado2 = Math.floor(Math.random()*(79-26+1)+26);
+        console.log(dado2);
+        
+        //14.Redondea la constante Math.PI a dos decimales. Haz lo mismo pero redondeando a tres, cuatro y cinco decimales.
+        console.log(`----------------- EJ14 ----------------------------`);
+        let pi = Math.PI;
+        let dec2 = redondearDecimales(pi,2);
+        let dec3 = redondearDecimales(pi,3);
+        let dec4 = redondearDecimales(pi,4);
+        let dec5 = redondearDecimales(pi,5);
+
+        console.log(dec2);
+        console.log(dec3);
+        console.log(dec4);
+        console.log(dec5);
+        
+        //FUNCION PARA PASAR GRADOS A RADIANES
+        function grados2radianes(grados){
+            return  grados/180*Math.PI;
+        }   
+
+        //EJEMPLO DE FUNCION PARA REDONDEAR
+        // let num = 8.7856;
+        // console.log(redondearDecimales(num,1));
+        function redondearDecimales(numero,decimales){
+        return  Math.round(numero * Math.pow(10,decimales)) / Math.pow(10,decimales);
+        }
+    </script>
+</body>
+</html>

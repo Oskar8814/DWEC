@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <form method="post" action="" id="formulario1">
+        Ingrese clave:
+        <input type="password" id="clave1" name="clave1" size="20" required>
+        <br> Repita clave:
+        <input type="password" id="clave2" name="clave2" size="20" required>
+        <br>
+        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+    </form>
+
+    <script>
+        addEventListener('load',inicio);
+        
+        function inicio() {
+            document.getElementById("formulario1").addEventListener('submit', validar);
+        }
+
+        function validar(evt) {
+            let cla1 = document.getElementById("clave1").value;
+            let cla2 = document.getElementById("clave2").value;
+            if (cla1 != cla2) {
+                alert('Las claves ingresadas son distintas');
+                evt.preventDefault();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

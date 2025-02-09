@@ -1,0 +1,28 @@
+<!-- Se debe desarrollar un programa que pida el ingreso del precio de un artículo y la cantidad que lleva el cliente. 
+Mostrar lo que debe abonar el comprador (Ingresar por teclado un precio sin decimales, es decir un entero: 2, 7, 90 etc.)  -->
+<!-- Apartado 4)  Modifica el programa para que pueda trabajar con precios decimales -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Precio de la compra</h1>
+<div id="contenido"></div>
+<body>
+    <script>
+        let precio = prompt("Indica el precio del producto.");
+        let cantidad = prompt("Indica la cantidad.")
+
+        let res = precio * cantidad;
+        let resultado = Number(res.toFixed(2));//redondear a 2 decimales Cuidado!! el toFixed devuelve tipo String por lo que hay que convertirlo a Number.
+        volcarTextoWeb("El precio total es: " + resultado);
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

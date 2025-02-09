@@ -1,0 +1,47 @@
+<!-- Crea un formulario que tenga dos botones con id boton1 y boton2 respectivamente. Crea también dos div con id div1 div2.
+
+Haz que los siguientes eventos tengan un único manejador de eventos llamado manejadorEventos:
+Clic sobre boton1
+Clic sobre boton2
+Ratón entra dentro de div1
+Ratón entra dentro de div2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p>Hola</p>
+        <p>Hola</p>
+    </div>
+    <div id="div2">
+        <p>Hola</p>
+        <p>Hola</p>
+    </div>
+
+    <input type="button" id="boton1" value="Boton 1">
+    <input type="button" id="boton2" value="Boton 2">
+
+    <script>
+        addEventListener("load", iniciar)
+        function iniciar() {
+            const boton1 = document.querySelector("#boton1");
+            boton1.addEventListener("click",manejador_compartido);
+            const boton2 = document.querySelector("#boton2");
+            boton2.addEventListener("click",manejador_compartido);
+            const div1 = document.querySelector("#div1")
+            div1.addEventListener("mouseenter",manejador_compartido);
+            const div2 = document.querySelector("#div2")
+            div2.addEventListener("mouseenter",manejador_compartido);
+        }
+
+        function manejador_compartido(evt) {
+            console.log(evt.target);
+            console.log(evt.type);
+        }
+    </script>
+</body>
+</html>

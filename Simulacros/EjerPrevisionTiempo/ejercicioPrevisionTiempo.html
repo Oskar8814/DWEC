@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,tr,table,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabla del tiempo</h1>
+    <table id="tiempo">
+        <img src="" alt="">
+    </table >
+
+    <script>
+        let encabezados=["Horas", "Previsión", "Viento", "Velocidad", "Lluvias"];         
+        let datos=[
+            {
+            hora:"19:00",
+            prevision:{ temperatura: "33º", icono:"dia" },
+            viento:"oeste",
+            velocidad:"15 km/h",
+            lluvias:"0 mm"
+            },
+            {
+            hora:"20:00",
+            prevision:{ temperatura: "30º", icono:"dia" },
+            viento:"norte",
+            velocidad:"5 km/h",
+            lluvias:"10 mm"
+            },
+            {
+            hora:"21:00",
+            prevision:{ temperatura: "28º", icono:"noche" },
+            viento:"sur",
+            velocidad:"0 km/h",
+            lluvias:"5 mm"
+            },
+
+        ];
+
+        let tabla = document.getElementById("tiempo");
+        let filaEncab = document.createElement('tr');
+        filaEncab.setAttribute('id','encabezados');
+
+
+        for (let i = 0; i < encabezados.length; i++) {
+            let fila = `<th>${encabezados[i]}</th>`;
+            filaEncab.innerHTML += fila;
+        }
+
+        tabla.appendChild(filaEncab);
+
+        let filaTiempo;
+        for (const dato of datos) {
+            filaTiempo = document.createElement('tr');
+            let codigoFila =`
+            <td style="font-weight:bold">${dato.hora}</td>
+            <td>${dato.prevision.temperatura}<img src="img/${dato.prevision.icono}.png" alt=""></td>
+            <td><img src="img/${dato.viento}.png" alt="aa"></td>
+            <td>${dato.velocidad}</td>
+            <td style="color:blue">${dato.lluvias}</td>`;
+            filaTiempo.innerHTML = codigoFila;
+            tabla.appendChild(filaTiempo);
+        }
+
+    </script>
+</body>
+</html>

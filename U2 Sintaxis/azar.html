@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<h1>Plantilla JavaScript v2</h1>
+	<h2>Pulsa F12 para ver la consola de depuración</h2>
+
+	<!-- Con el atributo onclick indicamos qué función de JS queremos que se ejecute al pulsar el botón-->
+	<!-- <input type="button" class="btn" onclick="diHola()" value="Pulsar"> -->
+	<br><br>
+	<div id="contenido" ></div>
+
+    <script>
+        let monedero = 50;
+
+        do {
+
+            let dineroApostado = parseInt(prompt("Introduce tu apuesta."));
+            // let apuestaUsuario = parseInt(prompt("Introduce un número entre 1 y 6."));
+            if(dineroApostado>monedero){
+                alert("Solo tienes en tu monedero " + monedero +" € o has introducido un dato no numérico");
+            }else{
+                do{
+                apuestaUsuario =parseInt(prompt("Introduce un número entre 1 y 6"));
+                console.log(apuestaUsuario)
+                }while(apuestaUsuario < 1 && apuestaUsuario > 6)
+
+                let apuestaMaq = getRandomInt(6);
+                console.log(apuestaMaq);
+
+                volcarTextoWeb("Numero del usuario "+apuestaUsuario);
+                volcarTextoWeb("Numero de la maquina "+apuestaMaq);
+                volcarTextoWeb("Cantidad apostada " + dineroApostado + " €");
+                alert("Número del usuario " + apuestaUsuario + "\n Número de la máquina " + apuestaMaq + "\n Cantidad apostada " + dineroApostado + " €");
+
+                if(apuestaUsuario==apuestaMaq){
+                    monedero += (dineroApostado*2);
+                    volcarTextoWeb("Has ganado!!");
+                    volcarTextoWeb("Tu monedero tiene " + monedero);
+                    alert("Has ganado " + dineroApostado*2 + " \n Tienes " + monedero + "€ en tu monedero.")
+                }else{
+                    monedero= monedero - dineroApostado;
+                    volcarTextoWeb("Perdiste.");
+                    volcarTextoWeb("Tienes en tu monedero " + monedero);
+                    alert("Has Perdido " + dineroApostado + " \n Tienes " + monedero + "€ en tu monedero.")
+                }
+            }
+            
+        }while(monedero>0 && monedero<200);
+
+        // Función para volvar contenido a la página web
+		function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`); //Con el beforeend lo coloca antes del final pero si quisieramos ponerlo al principio podemos usar el afterbegin.
+		}
+        
+        function getRandomInt(max) {
+        return Math.floor(Math.random() * max)+1;
+        }
+    </script>
+</body>
+</html>

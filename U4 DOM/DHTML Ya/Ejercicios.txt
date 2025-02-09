@@ -1,0 +1,15 @@
+3. Accediendo a una marca HTML a través del DOM (getElementById)
+9. Accediendo a un conjunto de marcas HTML similares (getElementsByTagName)
+10. Accediendo a un conjunto de marcas HTML similares a partir de un Nodo (getElementsByTagName)
+11. Agregar un nodo de texto (appendChild - createTextNode)
+13. Crear y agregar un nodo de tipo elemento (createElement - appendChild)
+14. Agregar un nodo de tipo elemento en medio (insertBefore - createElement)
+15. Eliminar un nodo de tipo elemento (removeChild)
+16. Crear un atributo y agregárselo a un nodo de tipo elemento (setAttribute)
+17. Borrar un atributo de un elemento (removeAttribute)
+18. Recuperar un atributo de un elemento (getAttribute)
+20. Mover un nodo de tipo elemento y clonación de nodos (cloneNode)
+21. Propiedad innerHTML
+22. Propiedad innerText
+23. Accediendo al estilo de una marca HTML.
+24. Creación de controles de tipo input dinámicamente.

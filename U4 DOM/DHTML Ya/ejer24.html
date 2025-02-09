@@ -1,0 +1,27 @@
+<!-- Creación de controles de tipo input dinámicamente.
+Problema:Disponer un control de tipo select con los valores enteros entre 0 y 5. 
+Crear tantos controles de tipo input tipo text como indique el control select. 
+Efectuar dicha creación cuando se dispara el evento onChange.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="valores" onchange="creaInput()" id="valores">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <div id="form"></div>
+
+    <script src="funciones.js"></script>
+</body>
+</html>

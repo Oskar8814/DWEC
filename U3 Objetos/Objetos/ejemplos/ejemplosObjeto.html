@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let persona1 = {
+            nombre:"Maria",
+            edad: 14,
+            notas: [8.1, 7.5, 5.2],
+            fumador: false,
+            fechaMatriculacion: new Date(2023,8,5),
+            cumplirAños: function(){this.edad++;},
+            toString:function() {return `Me llamo ${this.nombre} y mi edad es ${this.edad} años.`}
+        }
+        console.log(persona1);
+        console.log(persona1.toString());
+
+        class Persona {
+            constructor(nombre, edad, fechaNac, notas) {
+                this._nombre = nombre;
+                this._edad = edad;
+                this._fechaNac = fechaNac;
+                this._notas = notas;
+            }
+
+            //Metodos
+            toString(){
+                return `Me llamo ${this._nombre} y mi edad es ${this._edad} años. Mis notas son: ${this._notas.toString()}`;
+            }
+
+            //Getter y setters
+            get nombre(){
+                return this._nombre.toUpperCase();
+            }
+            set nombre(cadena){
+                this._nombre = cadena;
+            }
+            get edad(){
+                return this._edad;
+            }
+
+            set edad(nuevaEdad){
+                if (nuevaEdad>=0) {
+                    this._edad = nuevaEdad;
+                }else{
+                    throw new Error ("La edad debe ser mayor o igual a 0.");
+                }
+            }
+        }
+
+        let persona2 = new Persona("antonio",16,new Date(2023,8,5),[8.1, 7.5, 5.2]);
+        console.log(persona2.toString());
+
+        let persona3 = new Persona("antonio",17,new Date(2023,8,5),[8.1, 7.5, 5.2]);
+        //persona3.edad = -12;
+        console.log(persona3._edad);
+        console.log(persona3._nombre);
+        console.log(persona3.nombre);// Al poner en el getter el toUpperCase nos devuelve el nombre con letras mayusc
+
+        class Matematica {
+            static mayor(v1,v2) {
+                if (v1>v2)
+                    return v1;
+                else
+                    return v2;
+            }
+
+            static menor(v1,v2) {
+                if (v1<v2)
+                    return v1;
+                else
+                    return v2;
+            }
+
+            static aleatorio(inicio, fin) {
+                return Math.trunc((Math.random()*(fin+1-inicio))+inicio);
+            }
+        }
+        let numero = Matematica.aleatorio(2,10);
+        console.log("Número aleatorio: " + numero);
+
+    </script>
+</body>
+</html>

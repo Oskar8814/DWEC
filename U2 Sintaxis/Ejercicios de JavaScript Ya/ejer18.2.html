@@ -1,0 +1,39 @@
+<!-- 18.Elaborar una función a la cual le envíe el valor del lado de un cuadrado y me retorne su perímetro.  -->
+<!--  Apartado 2) Crea otra función a la que se le pase el radio y la altura de un cilindro y devuelva el volumen. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Calcular Perímetro y Volumen</h1>
+    <div id="contenido"></div>
+    <script>
+        let lado = Number(prompt("Introduce el valor del lado de un cuadrado."));
+        let radio = Number(prompt("Introduce el valor del radio de un cilindro."));
+        let altura = Number(prompt("Introduce el valor de la altura de un cilindro."));
+        let resultado1 = calculaPerimetro(lado);
+        let resultado2 = calculaVolumen(radio,altura)
+
+        function calculaPerimetro(lado){
+            let perimetro = lado*4;
+            return perimetro;
+        }
+
+        function calculaVolumen(radio, altura){
+            let volumen = Math.PI*(Math.pow(radio,2))*altura;
+            return volumen
+        }
+
+        volcarTextoWeb("El perimetro del cuadrado es " + resultado1);
+        volcarTextoWeb("El volumen del cilindro es " + resultado2);
+
+        function volcarTextoWeb(texto){
+            document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+        }
+    </script>
+</body>
+</html>

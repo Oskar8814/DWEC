@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //Se ejecuta cuando se carga la pagina completamente.
+    function iniciar() {
+        const boton1 = document.querySelector("#boton1");
+        boton1.addEventListener("click",manejador_compartido);
+        const boton2 = document.querySelector("#boton2");
+        boton2.addEventListener("click",manejador_compartido);
+        const lista = document.querySelector("#lista");
+        lista.addEventListener("change",manejador_compartido);
+    }
+
+    //Manejador de eventos compartido por el bot1 bot2 y select
+    // evt.target --> Control que ha desencadenado el evento
+    // evt.type --> tipo de evento
+    function manejador_compartido(evt) {
+        alert("Manejador"+ "\n ")
+        //cambiar el color de fondo del control
+        evt.target.style.backgroundColor = "yellow"
+    }
+
+    addEventListener("load", iniciar)
+    </script>
+    
+    <input type="button" id="boton1" value="bton 1">
+    <input type="button" id="boton2" value="boton 2">
+    <select name="" id="lista">
+        <option value="">Seleccionar</option>
+        <option value="1">Utrera</option>
+        <option value="2">Dos Hermanas</option>
+    </select>
+    
+</body>
+</html>

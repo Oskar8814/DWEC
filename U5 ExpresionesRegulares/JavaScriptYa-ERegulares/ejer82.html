@@ -1,0 +1,42 @@
+<!-- 82.Validar si un string contiene 4 números de 3 dígitos cada uno separados por coma.
+/^\d{3},\d{3},\d{3},\d{3}$/gm -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion"></div>
+
+    <form action="">
+        <label for="num">Ingrese un una serie de 4 números con 3 dígitos cada uno sparados por coma</label>
+        <input type="text" name="serie" id="serie">
+        <input type="button" value="Comprobar" id="comprobar">
+    </form>
+
+    <script>
+        let patronSerie = /^\d{3},\d{3},\d{3},\d{3}$/;
+
+        //Dom necesario
+        let inpSerie = document.querySelector("#serie");
+        let comprobar = document.querySelector("#comprobar");
+        let validacion = document.getElementById("validacion");
+
+        //Anadir el evento
+        
+        comprobar.addEventListener("click",comprobacion)
+        function comprobacion() {
+            let serie = inpSerie.value;
+            if (patronSerie.test(serie)) {
+                validacion.innerHTML = "La serie es correcta";
+            }else{
+                validacion.innerHTML = "La serie no es correcta";
+            }
+        }
+
+    </script>
+</body>
+</html>

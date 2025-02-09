@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Persona{
+            constructor(nombre, edad){
+                this._nombre = nombre;
+                this._edad = edad; 
+            }
+
+            
+            //Getter y setter
+            get nombre(){
+                return this._nombre;
+            }
+            set nombre(cadena){
+                this._nombre = cadena;
+            }
+
+            get edad(){
+                return this._edad;
+            }
+            set edad(nuevaEdad){
+                if (nuevaEdad>=0) {
+                    this._edad = nuevaEdad;
+                }else{
+                    throw new Error ("La edad debe ser mayor o igual a 0.");
+                }
+            }
+            toString(){
+                return `Nombre: ${this._nombre} -- Edad: ${this._edad} años `;
+            }
+        }
+        class Empleado extends Persona{
+            constructor(nombre, edad, sueldo){
+                super(nombre, edad);
+                this._sueldo = sueldo;
+            }
+
+            //Getter y Setter
+            get sueldo (){
+                return this._sueldo;
+            }
+
+            set sueldo (nuevoSueldo){
+                if (nuevoSueldo>0) {
+                    this._sueldo = nuevoSueldo;
+                }else{
+                    throw new Error ("El sueldo debe ser mayor o igual a 0.")
+                }
+            }
+
+            toString(){
+                return super.toString() + `-- sueldo: ${this._sueldo}`
+            }
+        }
+
+        const persona = new Persona("Juan", 30);
+        console.log(persona.toString());
+        const empleado = new Empleado("María", 40, 3000);
+        console.log(empleado.toString()); 
+
+        const empleados = [
+            new Empleado("Juan",18,1250),
+            new Empleado("Ana",15,870),
+            new Empleado("Zamundio",21,1320),
+            new Empleado("Maria",19,1650),
+        ]
+
+        const empleados2 = empleados;
+
+        //console.log(empleados);
+        //ordenarlos de menor a mayor
+        console.log("--------- Ordenar por edad de menor a mayor ---------------");
+
+        empleados2.sort(function(a,b){
+            if (a.edad>b.edad) {
+                return 1;
+            }
+            if (a.edad<b.edad) {
+                return -1;
+            }
+            return 0;
+        })
+        //console.log(empleados2);
+        empleados2.forEach(element => {
+            console.log(element.toString());
+        });
+
+        //Ordenarlos por sueldo de mayor a menor
+        console.log("--------- Ordenar por sueldo de mayor a menor ---------------");
+
+        empleados2.sort(function(a,b){
+            if (a.sueldo>b.sueldo) {
+                return -1;
+            }
+            if (a.sueldo<b.sueldo) {
+                return  1;
+            }
+            return 0;
+        })
+        //console.log(empleados2);
+        empleados2.forEach(element => {
+            console.log(element.toString());
+        });
+        //Ordenar por nombre
+        console.log("--------- Ordenar por nombre ---------------")
+        //empleados2.sort((c1,c2) => );
+        //console.log(empleados2);
+        empleados2.forEach(element => {
+            console.log(element.toString());
+        });
+    </script>
+</body>
+</html>

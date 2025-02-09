@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonoloto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Combinación Ganadora</h1>
+    <button type="button" id="boton">Genera Combinación</button>
+    <table id="bonoloto">
+        
+    </table>
+
+    <script>
+        let boton = document.getElementById('boton');
+        boton.addEventListener('click',sorteo,true);
+
+        function sorteo() {
+            let table = document.getElementById('bonoloto');
+            table.innerHTML="";
+            let combinacion = bonoloto();
+            
+            let aux = 1;
+            for (let i = 0; i < 7; i++) {
+                let fila = document.createElement('tr');
+                let code = "";
+                for (let j = 0; j < 7; j++) {
+                    if (combinacion.includes(aux)) {
+                        code+= `<td class="forma1" >${aux}</td> `;
+                    }else{
+                        code+= `<td class="forma2" >${aux}</td> `;
+                    }
+                    fila.innerHTML=code;
+                    aux++;
+                }
+                table.appendChild(fila);
+            }
+        }
+
+        function bonoloto() {
+            let combinacion = [];
+
+            while (combinacion.length<6) {
+                let num = Math.floor(Math.random() * 49) + 1;
+                if (!combinacion.includes(num)) {
+                    combinacion.push(num);
+                }
+            }
+
+            return combinacion;
+        }
+    </script>
+</body>
+</html>

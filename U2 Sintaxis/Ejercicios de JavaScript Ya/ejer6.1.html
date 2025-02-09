@@ -1,0 +1,35 @@
+<!-- 6. Apartado 1) Prepara el programa para que pregunte al usuario cuántas notas quiere introducir. Además las notas podrán tener decimales.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Calificaciones del alumno</h1>
+<div id="contenido"></div>
+<body>
+    <script>
+        let cantidad = prompt("Introduce la cantidad de notas a introducir.");
+        let sumaNotas = 0;
+        for (let i = 0; i < cantidad; i++){
+            let nota = prompt(`Introduce la nota ${i+1}`);
+            nota = Number(nota);
+            sumaNotas += nota;
+            console.log(nota)
+        }
+        console.log(sumaNotas)
+        let promedio = sumaNotas/cantidad;
+        console.log(promedio);
+        if(promedio >= 7){
+            volcarTextoWeb("Promocionado")
+        }else{
+            volcarTextoWeb("No promocionado")
+        }
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

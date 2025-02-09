@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion">
+
+    </div>
+    <form action="">
+        <label for="num">Ingrese un decimal con 3 enteros y 2 decimales</label>
+        <input type="number" name="numeroDecimal" id="numeroDecimal">
+        <input type="button" value="Comprobar" id="comprobar">
+    </form>
+    <script>
+
+        let patronNum = /^\d{3}(\.\d{2})?$/;
+
+        //Apuntar al DOM necesario
+        let inpNumero = document.querySelector("#numeroDecimal");
+        let comprobar = document.querySelector("#comprobar");
+        let validacion = document.getElementById("validacion");
+
+        //Añadir el event con js
+
+        comprobar.addEventListener("click",comprobacion)
+        function comprobacion() {
+            let decimal = inpNumero.value;
+            if (patronNum.test(decimal)) {
+                validacion.innerHTML = "El número es correcto";
+            }else{
+                validacion.innerHTML = "El numero no es correcto";
+            }
+        }
+    </script>
+</body>
+</html>

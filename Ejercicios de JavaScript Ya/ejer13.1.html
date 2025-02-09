@@ -1,0 +1,36 @@
+<!-- Escribir un programa que lea 10 notas de alumnos y nos informe cuántos tienen notas mayores o iguales a 7 y cuántos menores.  -->
+<!-- 13. Apartado 1)  Prepara el programa para se puedan introducir números decimales. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contador de notas</h1>
+    <div id="contenido"></div>
+
+    <script>
+        let mayor = 0;
+        let menor = 0;
+
+        for (let i = 0; i<10; i++){
+            let nota = Number(prompt(`Introduce la ${i+1} nota.`));
+            if (nota>=7){
+                mayor++;
+            }else{
+                menor++;
+            }
+        }
+
+        volcarTextoWeb("Existen " + mayor + " mayores o igual a 7.")
+        volcarTextoWeb("Existen " + menor + " menores a 7.")
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- Solicitar que se ingrese el nombre y la clave de un usuario. 
+Mostrar una ventana de alerta si en la clave se ingresan menos de 7 caracteres o más de 20 (capturar el evento onBlur) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre">
+    <label for="clave">Clave:</label>
+    <input type="text" name="clave" id="clave">
+
+    <script>
+        function iniciar() {
+            document.querySelector("#clave").addEventListener('blur',comprueba);
+        }
+
+        function comprueba() {
+            const nombre = document.getElementById("nombre").innerHTML;
+            const clave = document.getElementById("clave").innerHTML;
+            
+            if (clave.length<7 || clave.length>20) {
+                alert("Cantidad menor de 7 o mayor de 20");
+            }
+        }
+
+        addEventListener('load',iniciar);
+
+    </script>
+</body>
+</html>

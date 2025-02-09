@@ -1,0 +1,28 @@
+<!-- Accediendo al estilo de una marca HTML. -->
+<!-- Problema:Definir una lista con tres nombres de paises. 
+Luego en tiempo de ejecución permitir cambiar el estilo de la lista.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <ul id="lista">
+        <li>España</li>
+        <li>Inglaterra</li>
+        <li>Japón</li>
+    </ul>
+    <select name="estiloLista" onchange="cambiaEstiloLista()" id="estiloLista">
+        <option value="none">none</option>
+        <option value="disc">disc</option>
+        <option value="square">square</option>
+        <option value="circle">circle</option>
+        <option value="decimal">decimal</option>
+        <option value="unset">unset</option>
+    </select>
+    <script src="funciones.js"></script>
+</body>
+</html>

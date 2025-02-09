@@ -1,0 +1,42 @@
+<!-- 80.Solicitar el ingreso de la coordenada de un punto. 
+El formato a ingresar por teclado es:
+(999,999)Los números pueden tener entre 1 y 3 dígitos.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion">
+
+    </div>
+    <form action="">
+        <label for="coord">Ingrese una coordenada con formato (999,999)</label>
+        <input type="text" name="coordenada" id="coordenada">
+        <input type="button" value="Comprobar" id="comprobar">
+    </form>
+
+    <script>
+        let patronCoord = /^\d{3}\,\d{3}$/;
+
+        //Apuntar al DOM necesario
+        let inpCoord = document.querySelector("#coordenada");
+        let comprobar = document.querySelector("#comprobar");
+        let validacion = document.getElementById("validacion");
+
+        //Anadir el evento
+        comprobar.addEventListener("click",comprobacion)
+        function comprobacion() {
+            let coordenada = inpCoord.value;
+            if (patronCoord.test(coordenada)) {
+                validacion.innerHTML = "La coordenada es correcta";
+            }else{
+                validacion.innerHTML = "La coordenada no es correcta";
+            }
+        }
+    </script>
+</body>
+</html>

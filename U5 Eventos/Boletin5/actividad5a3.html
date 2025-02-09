@@ -1,0 +1,35 @@
+<!-- Crea una lista desplegable que contenga las localidades “Utrera”, “Los Palacios” y “Dos Hermanas”.
+Cuando el usuario seleccione una localidad debe mostrarse junto al control la localidad que ha seleccionado en el desplegable. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Localidad:</label>
+    <select name="pueblos" id="pueblos">
+        <option value="Utrera">Utrera</option>
+        <option value="Los Palacios">Los Palacios</option>
+        <option value="Dos Hermanas">Dos Hermanas</option>
+    </select>
+    <p style="display: inline;" id="parrafo">Localidad seleccionada: </p>
+
+    <script>
+        addEventListener("load", iniciar);
+        function iniciar() {
+            const pueblos = document.querySelector('#pueblos');
+            pueblos.addEventListener("change", escribir);
+        }
+        function escribir(evt) {
+            const parrafo = document.querySelector('#parrafo');
+            let pueblo = evt.target.value;
+            console.log(pueblo);
+            
+            parrafo.innerHTML = "Localidad seleccionada: " + pueblo;
+        }
+    </script>
+</body>
+</html>

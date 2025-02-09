@@ -1,0 +1,28 @@
+<!-- Realizar la carga del lado de un cuadrado, mostrar por pantalla el perímetro del mismo (El perímetro de un cuadrado se calcula multiplicando el valor del lado por cuatro) -->
+<!-- 5. Apartado 1) Haz que también se muestre al usuario el área del cuadrado. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Calcular el perimetro de un cuadrado</h1>
+<div id="contenido"></div>
+<body>
+    <script>
+        let lado;
+        lado = prompt("Introduce el valor del lado del cuadrado");
+        perimetro = lado * 4;
+        area = lado * lado;
+
+        volcarTextoWeb("El perimetro del cuadrado es " + perimetro);
+        volcarTextoWeb("El área del cuadrado es " + area)
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

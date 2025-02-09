@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #test {
+            width: 100px;
+            height: 100px;
+            margin: 0px auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function drawShape() {
+
+            // Obtener el canvas mediante el dom
+            var canvas = document.getElementById('mycanvas');
+
+            // Asegura la compatibilidad del explorador con el uso de canva
+            if (canvas.getContext) {
+                // Con getContext preparamos el canvas para dibujar
+                var ctx = canvas.getContext('2d');
+
+                //Dibujar las formas
+                ctx.beginPath();
+                ctx.arc(75, 75, 50, 0, Math.PI * 2, true);  // Circulo exterior
+                ctx.moveTo(110, 75);
+                ctx.arc(75, 75, 35, 0, Math.PI, false);   // Boca
+                ctx.moveTo(65, 65);
+                ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // ojo izq
+                ctx.moveTo(95, 65);
+                ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  //  ojo derch
+                ctx.stroke();
+            } else {
+                alert('Necesitas Safari o Firefox 1.5+ para ver esta demo.');
+            }
+        }
+    </script>
+</head>
+
+<body id="test" onload="drawShape();">
+    <canvas id="mycanvas"></canvas>
+</body>
+
+</html>

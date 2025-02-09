@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Piloto{
+            constructor (nombre){
+                this._nombre=nombre;
+            }
+            //Getter y setter
+            get nombre (){
+                return this._nombre;
+            }
+            set nombre(cadena){
+                this._nombre = cadena;
+            }
+        }
+
+        class Aeroplano {
+            constructor(modelo, piloto, copiloto){
+                this._modelo = modelo;
+                this._piloto = piloto;
+                this._copiloto = copiloto;
+            }
+            //getter y setter
+            get modelo(){
+                return this._modelo;
+            }
+            set modelo(cadena){
+                this._modelo = cadena;
+            }
+
+            //Metodo de instancia
+            volar(){
+                return `Volando ${this._modelo} con ${this._piloto.nombre} como piloto y ${this._copiloto.nombre} como copiloto`
+            }
+        }
+
+        const piloto1 = new Piloto("Hans Solo");
+        const piloto2 = new Piloto("Murdock");
+        const avioneta = new Aeroplano("Airbus C295", piloto1, piloto2);
+        console.log(avioneta.volar());
+
+    </script>
+</body>
+</html>

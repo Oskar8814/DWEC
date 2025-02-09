@@ -1,0 +1,36 @@
+<!-- 65. Eventos: mouseover y mouseout 
+Mostrar un elemento de tipo H1, 
+luego cuando se ingrese con el mouse dentro del mismo cambiar el color a letra roja 
+y color de fondo amarillo, luego cuando se mueva la flecha del mouse fuera del elemento volver al color original.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="color">Titular</h1>
+</body>
+
+<script>
+    addEventListener("load",inicio);
+    function inicio(){
+        document.querySelector("#color").addEventListener('mouseover',cambiarColores);
+        document.querySelector("#color").addEventListener('mouseout',reset);
+
+    }
+
+    function cambiarColores() {
+        let h1 = document.querySelector("#color");
+        h1.style.color="red";
+        h1.style.backgroundColor="yellow";
+    }
+    function reset() {
+        let h1 = document.querySelector("#color");
+        h1.style.color="black";
+        h1.style.backgroundColor="white";
+    }
+</script>
+</html>

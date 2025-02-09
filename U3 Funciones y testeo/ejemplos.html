@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Funciones y testeo</title>
+</head>
+<body>
+    <script src="funciones.js"></script>
+    <script>
+        //TEST 1º FUNCION funciones.js volcando datos de salida a consola
+        for (let i = 0; i<=100; i++){
+        console.log("El numero " + i + " => " + comprobarEsPar(i));
+        }
+        //TESTEO con datos de entrada y salida esperados
+        let datos = [
+            {entrada:0, salidaEsperada : true},
+            {entrada:3, salidaEsperada : false},
+            {entrada:4, salidaEsperada : true},
+            {entrada:7, salidaEsperada : false},
+            {entrada:11, salidaEsperada : false},
+        ];
+
+        for (let i = 0; i < datos.length; i++) {
+            let salida = comprobarEsPar(datos[i].entrada);
+            if (salida == datos[i].salidaEsperada){
+                console.log("CORRECTO");
+            }else{
+                console.log("Para la entrada " + datos[i].entrada + " el valor esperado era " + datos[i].salidaEsperada);
+            }
+            
+        }
+
+        //TESTEO CALIFICACIONES NOTA ESPERADA verCalificacion();
+
+        for (let i = -2; i < 12; i++) {
+            let calificacion = verCalificacion(i);
+            console.log("Para la nota " + i + " => " + calificacion);
+            
+        }
+        //TESTEO con datos de entrada y salida esperados en verCalificacion();
+        let datos2 = [
+            {entrada: -1 , salidaEsperada: "VALOR INCORRECTO"},
+            {entrada: 4 , salidaEsperada: "INSUFICIENTE"},
+            {entrada: 6 , salidaEsperada: "BIEN"},
+            {entrada: 9 , salidaEsperada: "SOBRESALIENTE"},
+        ];
+    </script>
+</body>
+</html>

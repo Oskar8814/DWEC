@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Dado con Imágenes</title>
+    <style>
+        #resultado {
+            margin-top: 20px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulador de Lanzamiento de Dado</h1>
+    <button onclick="lanzarDado()">Lanzar Dado</button>
+    <div id="resultado">
+        <!-- Imagen inicial del dado (puede ser un dado vacío o la primera cara) -->
+        <img id="dadoImagen" src="img/dado1.png" alt="Dado">
+    </div>
+
+    <script>
+        function lanzarDado() {
+            // Seleccionamos el elemento de la imagen del dado
+            const dadoImagen = document.getElementById("dadoImagen");
+
+            // Iniciamos el intervalo para cambiar la imagen del dado cada 500ms
+            const intervalo = setInterval(() => {
+                const valor = Math.floor(Math.random() * 6) + 1;
+                dadoImagen.src = `img/dado${valor}.png`;
+            }, 500);
+
+            // Detenemos el cambio después de 5 segundos
+            setTimeout(() => {
+                clearInterval(intervalo);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        function numeroDiasFechas (fechaDesde, fechaHasta){
+            eltDesde = fechaDesde.split("/");
+            eltHasta = fechaHasta.split("/");
+
+            //Parsear a tipo number ambos arrays
+            eltDesde[0] = parseInt(eltDesde[0], 10);  // Día
+            eltDesde[1] = parseInt(eltDesde[1], 10);  // Mes
+            eltDesde[2] = parseInt(eltDesde[2], 10);  // Año
+            
+            eltHasta[0] = parseInt(eltHasta[0], 10);  // Día
+            eltHasta[1] = parseInt(eltHasta[1], 10);  // Mes
+            eltHasta[2] = parseInt(eltHasta[2], 10);  // Año
+
+            if (eltDesde[0] < 0 || eltHasta[0] < 0 || eltDesde[0]>31 || eltHasta[0]>31) {
+                throw new Error("Alguna(s) de las fechas de entrada es incorrecta");
+            };
+            if (eltDesde[1] <= 0 || eltHasta[1] <= 0 || eltDesde[1]>12 || eltHasta[1]>12) {
+                throw new Error("Alguna(s) de las fechas de entrada es incorrecta");
+            };
+            if (eltDesde[2] <= 0 || eltHasta[2] <= 0) {
+                throw new Error("Alguna(s) de las fechas de entrada es incorrecta");
+            };
+
+            let fecha1 = new Date(eltDesde[2],eltDesde[1]-1,eltDesde[0]);
+            let fecha2 = new Date(eltHasta[2],eltHasta[1]-1,eltHasta[0]);
+
+            let diff1=fecha1.getTime();
+            let diff2=fecha2.getTime();
+
+            let diffMsg = diff1-diff2;
+            let dias = diffMsg/1000/60/60/24;
+            
+            return dias;
+        } 
+
+        console.log(numeroDiasFechas("05/05/1975", "10/05/1975")); 
+        console.log(numeroDiasFechas("05/05/1975", "10/15/1975")); //Error para el formato de fecha.
+
+    </script>
+</body>
+</html>

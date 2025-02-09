@@ -1,0 +1,48 @@
+<!-- Problema:Permitir cambiar el tamaño de la fuente de un párrafo. Para esto crear tres botones (fuente pequeña (10), fuente mediana(13) y fuente grande(20)) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <script>
+        function cambiarTamaño(tamaño) {
+
+            let myDiv = document.getElementById("textos");  //Guardamos el div en la variable
+            let parrafos = myDiv.querySelectorAll("p");     //obtenemos los parrafos existentes en el div
+            
+            for (let i = 0; i < parrafos.length; i++) {
+                parrafos[i].setAttribute("style", `font-size: ${tamaño};`); //Añadimos en cada parrafo el tamaño deseado.
+            }
+        }
+    </script>
+    <h1>Cambiar tamaño del texto</h1>
+    <div id="textos">
+        <h3>Texto 1</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur.<br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+        <h3>Texto 2</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+        <h3>Texto 3</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+    </div>
+
+    <input type="button" onclick="cambiarTamaño('20px')" value="Grande">
+    <input type="button" onclick="cambiarTamaño('10px')" value="Pequeña">
+    <input type="button" onclick="cambiarTamaño('13px')" value="Mediana">
+</body>
+</html>

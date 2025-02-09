@@ -1,0 +1,29 @@
+<!-- 63. Eventos: click y dblclick 
+Realizar un programa que muestre en un div el número 2.
+cada vez que se hace doble clic sobre el mismo duplicar el valor contenido en el div.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="numero">2</div>
+
+    <script>
+        addEventListener('load',inicio);
+        function inicio() {
+            document.querySelector("#numero").addEventListener('dblclick',duplicar);
+            
+        }
+
+        function duplicar() {
+            let valor = parseInt(document.querySelector("#numero").innerHTML);
+            valor += valor;
+            document.querySelector("#numero").innerHTML = valor;
+        }
+    </script>
+</body>
+</html>

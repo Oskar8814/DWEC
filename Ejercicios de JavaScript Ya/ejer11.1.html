@@ -1,0 +1,43 @@
+<!-- Solicitar el ingreso alguna de estas palabras (casa, mesa, perro, gato) luego mostrar la palabra traducida en inglés. 
+Es decir, si se ingresa 'casa' debemos mostrar el texto 'house' en la página. -->
+<!-- Apartado 1) Prepara el programa para que el usuario pueda introducir además cuatro palabras más en francés (las que quieras) y muestre la correspondiente traducción -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>traducción</h1>
+    <div id="contenido"></div>
+    <script>
+        
+        let eleccion = prompt("Introduce la palabra (casa, mesa, perro o gato)");
+        let casa = "house";
+        let mesa = "table";
+        let perro = "dog";
+        let gato = "cat";
+        let bonjour = "hola";
+        let merci = "gracias";
+        let choisir = "elegir";
+        let ameliorer = "mejorar"
+
+        switch(eleccion){
+            case "casa": volcarTextoWeb ("La traducción al inglés es: " + casa);break
+            case "mesa": volcarTextoWeb ("La traducción al inglés es: " + mesa);break
+            case "perro": volcarTextoWeb ("La traducción al inglés es: " + perro);break
+            case "gato": volcarTextoWeb ("La traducción al inglés es: " + gato);break
+            case "bonjour": volcarTextoWeb ("La traducción al español es: " + bonjour);break
+            case "merci": volcarTextoWeb ("La traducción al español es: " + merci);break
+            case "choisir": volcarTextoWeb ("La traducción al español es: " + choisir);break
+            case "ameliorer": volcarTextoWeb ("La traducción al español es: " + ameliorer);break
+            default:volcarTextoWeb("El texto introducido no corresponde con ninguna traducción disponible.")
+        }
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

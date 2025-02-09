@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Alta de Paciente</h1>
+    <form id="formulario" action="procesar.php" method="post">
+        <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required maxlength="30"><br>
+
+            <input type="radio" name="sexo" id="sexo" value="hombre" required> Hombre
+            <input type="radio" name="sexo" id="sexo" value="mujer" required> Mujer <br>
+        <label for="altura">Altura:</label>
+            <input type="number" name="altura" id="altura" min="50" max="210" required><br>
+        <label for="fecha">Fecha de Nacimiento:</label>
+            <input type="date" name="fechaNacimiento" id="fechaNacimiento" required>
+        <span id="errorFecha" class="error"></span><br>
+        <label for="semana">Semana Preferente:</label>
+            <input type="week" name="semanaPreferente" id="semanaPreferente"><br>
+        <label for="fumador">¿Es usted fumador?</label>
+            <input type="checkbox" id="fumador" name="fumador">
+            <br><br>
+        <label for="cigarrillos">Número de cigarrillos:</label>
+            <select id="cigarrillos" name="cigarrillos" disabled>
+                <option value="1-5">1-5</option>
+                <option value="6-10">6-10</option>
+                <option value="mas-de-10">Más de 10</option>
+            </select>
+            <span id="errorCigarrillos" class="error"></span>
+            <br><br>
+        <label for="observaciones">Observaciones</label>
+        <textarea name="observaciones" id="observaciones"></textarea><br><br>
+        <button type="submit" id="enviar" disabled >Enviar</button>
+        <button type="reset">Borrar</button>
+    </form>
+
+    <script>
+        addEventListener("load", iniciar);
+        function iniciar() {
+            const fecha = document.querySelector("#fechaNacimiento");
+            fecha.addEventListener("change",edad);
+
+            const fumador = document.querySelector("#fumador");
+            fumador.addEventListener("change",fumar);
+        }
+
+        function edad(evt) {
+            const fechaNacimiento = evt.target.value;
+            const errorFecha = document.querySelector("#errorFecha");
+            const submit = document.querySelector("#enviar");
+            
+            console.log(fechaNacimiento);
+            let fechaSelect = new Date(fechaNacimiento).getTime();
+            let hoy = Date.now();
+
+            //calculamos la edad
+            let difftotal = hoy-fechaSelect;
+            let años = difftotal/1000/60/60/24/365;
+
+            if(años>=18){
+                submit.disabled = false;
+            }
+        }
+
+        function fumar(evt) {
+            const fumador = evt.target.checked;
+            const cigarrillos = document.querySelector("#cigarrillos");
+
+            if (fumador) {
+                cigarrillos.disabled = false;
+            }else{
+                cigarrillos.disabled = true;
+            }
+        }
+
+    </script>
+</body>
+</html>

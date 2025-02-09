@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const cuenta1 = {
+            titular: "Javier",
+            saldo: 3000,
+            ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+            extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    //return `Saldo insuficiente`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo; //Para futuras operaciones mejor ret un dato num
+                }
+                },
+            transferir: function(cuenta,cantidad){
+                this.saldo = this.saldo - cantidad;
+                cuenta.ingresar(cantidad);
+            },
+            toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`}
+        };
+
+        const cuenta2 = {
+            titular: "Rocío",
+            saldo: 5000,
+            ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+            transferir: function(cuenta,cantidad){
+                this.saldo = this.saldo - cantidad;
+                cuenta.ingresar(cantidad);
+            },
+            extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    //return `Saldo insuficienete`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo;
+                }
+                
+                },
+            toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`}
+        };
+
+        // console.log(cuenta1.toString());
+        // console.log(cuenta2.toString());
+        
+        cuenta1.transferir(cuenta2,500);
+        //Testeo transferir
+        if (cuenta1.saldo==2500 && cuenta2.saldo == 5500) {
+            console.log("La transferencia se ha realizado correctamente")
+        }
+
+        console.log(`Saldo de la cuenta1: ${cuenta1.saldo} (Debería mostrar 2500€ )`); // Debería mostrar 2500€ 
+        console.log(`Saldo de la cuenta2: ${cuenta2.saldo} (Debería mostrar 5500€ )`); // Debería mostrar 5500€
+
+        //Testeo resto funciones
+        try {
+            console.log(cuenta1.extraer(6200));
+        } catch (error) {
+            alert (error.message)
+        }
+
+        cuentas = [
+            {   titular: "Carlos",
+                saldo: 10000,
+                ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+
+                transferir: function(cuenta,cantidad){
+                    this.saldo = this.saldo - cantidad;
+                    cuenta.ingresar(cantidad);},
+
+                extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    return `Saldo insuficiete`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo;
+                }
+                },
+                toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`} 
+            },
+            {
+                titular: "Lidia",
+                saldo: 12500,
+                ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+                transferir: function(cuenta,cantidad){
+                    this.saldo = this.saldo - cantidad;
+                    cuenta.ingresar(cantidad);},
+                extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    return `Saldo insuficiente`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo;
+                }
+                },
+                toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`} 
+            },
+            {
+                titular: "Alicia",
+                saldo: 8500,
+                ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+                transferir: function(cuenta,cantidad){
+                    this.saldo = this.saldo - cantidad;
+                    cuenta.ingresar(cantidad);},
+                extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    return `Saldo insuficiente`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo;
+                }
+                },
+                toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`}
+            },
+            {
+                titular: "Felipe",
+                saldo: 9000,
+                ingresar:function(cantidad){this.saldo = this.saldo+cantidad;},
+                transferir: function(cuenta,cantidad){
+                    this.saldo = this.saldo - cantidad;
+                    cuenta.ingresar(cantidad);},
+                extraer: function(cantidad) {
+                if (cantidad>this.saldo) {
+                    throw new Error("Saldo insuficiente");
+                    return `Saldo insuficienete`
+                }else{
+                    this.saldo-=cantidad;
+                    return this.saldo;
+                }
+                },
+                toString:function(){return `Titular: ${this.titular}, saldo: ${this.saldo} €`}
+            }
+        ];
+
+        //Ordenar de menor a mayor. cuentas.sort((n1,n2)=>(n1-n2))
+        cuentas.sort(function(a,b){
+            if (a.saldo>b.saldo) {
+                return 1;
+            }
+            if (a.saldo<b.saldo) {
+                return -1;
+            }
+            return 0;
+        });
+
+
+
+        //ordenar por el nombre usando localeCompare
+        let  cuentas2 = cuentas.slice();
+        cuentas.sort((c1,c2)=>c1.titular.localeCompare(c2.titular));
+
+        //Testeo de la ordenacion
+        let ordenado = true;
+        for (let i = 0; i < cuentas.length - 1; i++) {
+            if (cuentas[i].saldo > cuentas[i + 1].saldo) {
+                ordenado = false;
+            }
+        }
+
+        console.log(cuentas)
+        console.log((ordenado)?"El array esta ordenado de menor a mayor":"El array no se encuentra ordenado.");
+    </script>
+</body>
+</html>

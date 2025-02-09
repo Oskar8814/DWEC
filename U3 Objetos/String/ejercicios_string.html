@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.Crea una variable que contenga tu nombre completo. Vuelca a consola el número de caracteres.
+        let nombreEjer1 = "Oscar Garcia Sanchez";
+        console.log(nombreEjer1.length);
+        //2.Crear una variable que contenga tu nombre. Crea un bucle que vuelque a consola cada uno de los caracteres que contiene (un carácter por línea) usando el método charAt.
+        let nombreEjer2 = "Oscar Garcia Sanchez";
+        for(let i = 0; i<nombreEjer2.length; i++ ){
+            console.log("Posición " + i + "--> Caracter " + nombreEjer2.charAt(i) );
+        }
+        //3. Crear una variable que contenga tu nombre. Convierte toda la cadena a mayúsculas y vuélcala por consola. Haz lo mismo pero convirtiéndola a minúsculas.
+        let nombreEjer3 = "Oscar Garcia Sanchez";
+        let mayusculas = nombreEjer3.toLocaleUpperCase();
+        console.log(`Mayusculas: ${mayusculas}`);
+        let minusculas = nombreEjer3.toLowerCase();
+        console.log(`Minusculas: ${minusculas}`);
+        
+        //4.Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”.
+        // Examina la longitud de la cadena y muéstrala por consola. Usando el método indexOf busca la palabra ‘Mancha’ e indica en qué posición se encuentra.
+        //Usando de nuevo el método indexOf busca la palabra ‘Quijote’, indicando que valor ha devuelto el método. 
+        //Usando lastIndexOf busca la última posición en la que se encuentra la palabra ‘de’.
+        let textoQuijote = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        console.log("Longitud del texto " + textoQuijote.length)
+        console.log ("La palabra Mancha se encuentra en " + textoQuijote.indexOf("Mancha"));
+        console.log ("Quijote se encuentre en la posición " + textoQuijote.indexOf("Quijote"));
+        console.log ("La palabra 'de' se encuentra en la posición " + textoQuijote.lastIndexOf("de"));
+
+        //5. Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. Usando el método substring debes extraer la palabra ‘lugar’.
+        let textoQuijote2 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let lugar = textoQuijote2.substring(5,11);
+        console.log(lugar);
+
+        //6. Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. 
+        //Usando el método includes debes comprobar si la frase contiene la palabra ‘cuyo’. Busca también si contiene la palabra ‘lugar’ a partir de la posición 12. 
+
+        let textoQuijote3 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let contiene = textoQuijote3.includes("cuyo");
+        console.log(contiene);
+        let indexLugar1 = textoQuijote3.indexOf("lugar", 12);
+        let indexLugar2 = textoQuijote3.lastIndexOf("lugar", 12);
+        let comprobar = false;
+        if (indexLugar2<12) {
+            comprobar = false;
+        }else{
+            comprobar=true;
+        }
+
+        console.log(indexLugar1);
+        console.log(indexLugar2);
+        console.log(comprobar);
+
+        // 7. Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. 
+        // Usando el método endsWith debes comprobar si la frase termina con la palabra ‘acordarme’. Comprueba también si termina con la palabra ‘hidalgo’.
+
+        let textoQuijote4 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let finaliza = textoQuijote4.endsWith("acordarme");
+        let finaliza2 = textoQuijote4.endsWith("hidalgo");
+        console.log(finaliza);
+        console.log(finaliza2);
+
+        // 8.Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. 
+        // Usando el método replace sustituye la palabra ‘Mancha’ por ‘Andalucía’.
+
+        let textoQuijote5 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let textoQuijoteR = textoQuijote5.replace("Mancha","Andalucia");
+        console.log(textoQuijoteR);
+
+        // 9. Crea una variable que contenga “Cebollas;Patatas;Pimientos;Tomates”. 
+        // Usando el método split y como separador el punto y coma debes crear un array que contenga [‘Cebollas’, ’Patatas’, ’Pimientos’, ‘Tomates’]
+
+        let comida = "Cebollas;Patatas;Pimientos;Tomates";
+        let partes = comida.split(";");
+        partes.push("Manzana");
+        console.log(partes);
+
+        //10.Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. 
+        //Usando el método startsWith debes comprobar si la frase comienza por ‘En’. Comprueba también si comienza por ‘lugar’.
+
+        let textoQuijote6 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let inicio = textoQuijote6.startsWith("En");
+        console.log(inicio);
+        let inicio2 = textoQuijote6.startsWith("lugar");
+        console.log(inicio2);
+
+        // 11.Crea una variable contenga “En un lugar de la Mancha de cuyo nombre no quiero acordarme”. 
+        // Usando el método substr debes extraer la palabra ‘lugar’. Extrae también de la frase la palabra ‘lugar’ pero usando el método substring.
+
+        let textoQuijote7 = "En un lugar de la Mancha de cuyo nombre no quiero acordarme";
+        let palabra = textoQuijote7.substr(6,6);
+        let palabra2 = textoQuijote7.substring(6,11);
+        console.log(palabra);
+        console.log(palabra2);
+
+        // 12. Crea una variable con el texto “   Javier Soldado   “.
+        // Usando el método trim debes obtener la palabra “Javier Soldado” (debes quitar todos espacios anteriores y posteriores).
+
+        let nombre = " Javier Soldado ";
+        let nombreT = nombre.trim();
+        console.log(nombreT);
+
+        // 13.Crea una variable con el contenido ‘JavaScript’. Usando el método adecuado rellena al final de la variable con asteriscos de manera que la nueva palabra tenga 15 caracteres. 
+        // Posteriormente rellena al principio de la variable las almohadillas necesarias para que la palabra resultante tenga 20 caracteres.
+
+        let js = "JavaScript";
+        let js2 = js.padEnd(15,"*");
+        console.log(js2);
+
+        js2 = js2.padStart(20,"#");
+        console.log(js2);
+    </script>
+</body>
+</html>

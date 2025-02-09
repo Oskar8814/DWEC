@@ -1,0 +1,81 @@
+<!-- Crea una función llamada validaCP que valide si un código postal es válido, 
+retornando true en caso afirmativo. 
+El código postal podrá tener opcionalmente espacios por delante o por detrás.
+Haz un testeo de la función. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion">
+
+    </div>
+
+    <form action="">
+        <label for="CP">Introduce el código postal:</label>
+        <input type="text" name="codigoPostal" id="codigoPostal">
+        <input type="button" value="validar" id="validar">
+    </form>
+
+    <script>
+        let patronCP = /^\s*\d{5}\s*$/;
+
+        //DOM
+        let inpcodigoPostal = document.querySelector("#codigoPostal");
+        let validacion = document.querySelector("#validacion");
+        let valida = document.querySelector("#validar");
+
+        //Añadir el evento
+        valida.addEventListener("click",validaCP)
+        function validaCP() {
+            let cp = inpcodigoPostal.value;
+            if (patronCP.test(cp)) {
+                validacion.innerHTML="El codigo postal es correcto";
+                
+            }else{
+                validacion.innerHTML="El codigo postal es incorrecto";
+                
+            }
+            return patronCP.test(cp);
+        }
+
+// Crea una función llamada extraeCPs que tenga como argumento de 
+// entrada una frase que contenga códigos postales.
+// La función debe devolver un array con todos los códigos postales encontrados. 
+// Haz un testeo de la función
+
+        let frase = "Para enviar el paquete correctamente, asegúrate de incluir el código postal 28001 en la dirección de Madrid, o el 90210 si el destino es Beverly Hills.";
+
+        function extraeCPs(frase) {
+            let arrayCPs;    
+            arrayCPs = frase.match(/\b\d{5}\b/g);
+
+            return arrayCPs;
+        }
+
+        //Testo mediante consola de los cp obtenidos en el array.
+        let arrayCPs = extraeCPs(frase);
+        console.log(arrayCPs);
+        
+        // Crea una función llamada sustituyeCPs que tenga como argumento de entrada una frase 
+        // que contenga códigos postales. La función debe devolver la frase de entrada sustituyendo 
+        // todos los códigos postales por la palabra C.P. Haz un testeo de la función.
+        function sustituyeCPs(frase) {
+            let arrayCPs;
+            fraseFinal = frase.replace(/\b\d{5}\b/g, "C.P.");
+            
+            return fraseFinal;
+        }
+        
+        //Testo mediante consola de los cp obtenidos en el array.
+        let testeoFrase = sustituyeCPs(frase);
+        console.log(testeoFrase);
+
+    </script>
+</body>
+</html>

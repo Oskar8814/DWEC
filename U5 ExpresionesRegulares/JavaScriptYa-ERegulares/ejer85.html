@@ -1,0 +1,38 @@
+<!-- 85.Validar el ingreso de una hora con el formato hh:mm:ss o hh:mm -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="validacion"></div>
+    <form action="" method="post">
+        <label for="time">Ingreso de una hora con el formato hh:mm:ss o hh:mm</label>
+        <input type="text" id="hora" name="hora" placeholder="hh:mm:ss o hh:mm" required>
+        <input type="button" value="Comprobar" id="comprobar">
+    </form>
+
+    <script>
+        let patronHora = /^((0[0-9])|(1[0-9])|(2[0123])):(([0-5]\d))(:(([0-5]\d)))?$/
+
+        //apuntar al DOM necesario
+        let inpHora = document.querySelector("#hora");
+        let comprobar = document.querySelector("#comprobar");
+        let validacion = document.getElementById("validacion");
+
+        //Anadir evento
+        comprobar.addEventListener("click",comprobacion);
+        function comprobacion() {
+            let hora = inpHora.value;
+            if (patronHora.test(hora)) {
+                validacion.innerHTML = "La coordenada es correcta";
+            }else{
+                validacion.innerHTML = "La coordenada no es correcta";
+            }
+        }
+    </script>
+</body>
+</html>

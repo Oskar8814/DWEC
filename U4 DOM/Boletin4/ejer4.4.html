@@ -1,0 +1,68 @@
+<!-- Crea un documento HTML que contenga tres párrafos y que mediante la propiedad style  display y visibility haz que el segundo párrafo se pueda mostrar u ocultar
+y además que se pueda elegir si al ocultarlo se reserva el espacio que ocupaba o no. 
+(Nota: modifica la propiedad style visibility “visible” o “hidden” y la propiedad style display “inline” o “none”)  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 4.18</title>
+</head>
+<script>
+    function cambiarVisibilidadDisplay() {
+
+        let visibilidad = document.getElementById('visibilidad').checked; //Cogemos el checkbox del formulario con la visibilidad seleccionada
+        let display =document.getElementById('display').value //Cogemos el value del formulario con el display seleccionado
+        let myDiv = document.getElementById("textos");  //Guardamos el div en la variable
+        let parrafos = myDiv.querySelectorAll("p");     //obtenemos los parrafos existentes en el div
+        
+        if (visibilidad) {
+            let visibility = "hidden";
+            parrafos[1].setAttribute("style", `visibility: ${visibility};display: ${display}`); 
+        }else{
+            let visibility = "visible";        
+            parrafos[1].style.visibility = visibility;
+            parrafos[1].style.display = display;
+            //parrafos[1].setAttribute("style", `visibility: ${visibility};display: ${display}`); 
+
+        }
+        
+    }
+</script>
+<body>
+    <h1>Cambiar visibilidad del texto</h1>
+    <div id="textos">
+        <h3>Texto 1</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur.<br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+        <h3>Texto 2</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+        <h3>Texto 3</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum."</p>
+    </div>
+</body>
+<br><br>
+<form action="#">
+    <label for="selecciona">Selecciona la visibilidad</label>
+    <input type="checkbox" name="visibilidad" id="visibilidad">
+    <label for="selecciona">Selecciona el display</label>
+    <select name="display" id="display">
+        <option value="inline">inline</option>
+        <option value="none">none</option>
+    </select>
+    <input type="button" onclick="cambiarVisibilidadDisplay();" value="Ocultar">
+</form>
+
+</html>

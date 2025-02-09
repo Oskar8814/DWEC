@@ -1,0 +1,32 @@
+<!-- Escribir un programa que pida ingresar la coordenada de un punto en el plano, es decir dos valores enteros x e y.
+Posteriormente imprimir en pantalla en qué cuadrante se ubica dicho punto. (1º Cuadrante si x > 0 Y y > 0 , 2º Cuadrante: x < 0 Y y > 0, etc.)  -->
+<!-- Apartado 4) Prepara el programa para que trabaje con números decimales -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Cartografia</h1>
+<div id="contenido"></div>
+<body>
+    <script>
+        let x = Number(prompt("Introduce la coordenada X"));
+        let y = Number(prompt("Introduce la coordenada Y"));
+
+        if(x>0 && y>0){
+            volcarTextoWeb("La coordenada se encuentra en el 1º Cuadrante");
+        }else if(x<0 && y>0){
+            volcarTextoWeb("La coordenada se encuentra en el 2º Cuadrante.");
+        }else{
+            volcarTextoWeb("La coordenada no se encuentra en el 1º o 2º Cuadrante");
+        }
+        
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

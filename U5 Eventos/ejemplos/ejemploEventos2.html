@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor"></div>
+
+    <script>
+        let parrafo1 = document.createElement("p");
+        parrafo1.id = "parrafo1";
+        parrafo1.innerHTML= "Parrafo 1";
+
+        document.querySelector("#contenedor").appendChild(parrafo1);
+        function manejador(evt) {
+            alert(evt.target.id)
+        }
+
+        parrafo1.addEventListener("click",manejador);
+        
+    </script>
+</body>
+</html>

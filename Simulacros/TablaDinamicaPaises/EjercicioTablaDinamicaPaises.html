@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,tr,table,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabla dinámica de Paises</h1>
+    <table id="paises"></table>
+    <script>
+        let encabezados=["Nº", "Pais", "Capital", "Habitantes", "Bandera", "Acciones"];         
+
+        let paises = [
+			{ nombre: 'Francia', capital: 'París', datos: { gobierno: 'República', habitantes: 67407241, idioma: 'francés' }, imagen: 'img/france.png' },
+			{ nombre: 'Alemania', capital: 'Berlín', datos: { gobierno: 'República federal', habitantes: 83149300, idioma: 'alemán' }, imagen: 'img/germany.png' },
+			{ nombre: 'Italy', capital: 'Roma', datos: { gobierno: 'República parlamentaria', habitantes: 60257566, idioma: 'italiano' }, imagen: 'img/italy.png' },
+			{ nombre: 'Portugal', capital: 'Lisboa', datos: { gobierno: 'República unitaria', habitantes: 10295909, idioma: 'portugués' }, imagen: 'img/portugal.png' },
+			{ nombre: 'España', capital: 'Madrid', datos: { gobierno: 'Monarquía parlamentaria', habitantes: 47450795, idioma: 'español' }, imagen: 'img/spain.png' },
+		];
+
+        let tabla = document.getElementById("paises");
+        let filaEncab = document.createElement('tr');
+        filaEncab.setAttribute('id','encabezados');
+
+        for (let i = 0; i < encabezados.length; i++) {
+            let fila = `<th>${encabezados[i]}</th>`;
+            filaEncab.innerHTML += fila;
+            
+        }
+        tabla.appendChild(filaEncab);
+        
+        let filaPais;
+        let aux = 1;
+        for (const element of paises) {
+            filaPais = document.createElement('tr');
+            let codigoFila = `
+            <td>${aux}</td>
+            <td>${element.nombre}</td>
+            <td>${element.capital}</td>
+            <td>${element.datos.habitantes}</td>
+            <td><img src="${element.imagen}" alt=""></td>
+            <td><input type='button' onclick='idioma("${element.datos.idioma}");' value='Idioma'>
+                <input type='button' onclick='borrar(this);' value='Borrar'>
+                <input type='button' onclick='arriba(this);' value='Arriba'>
+                <input type='button' onclick='abajo(this);' value='Abajo'>
+            </td>
+            
+            `
+            filaPais.innerHTML = codigoFila;
+            tabla.appendChild(filaPais);
+            aux++;
+        }
+
+        function idioma(idioma) {
+            alert(idioma);
+        }
+
+        function borrar (boton){
+            let filaABorrar = boton.parentElement.parentElement;
+            //Forma 1
+            // filaABorrar.remove();
+            //Forma 2
+            tabla.removeChild(filaABorrar);
+        }
+
+        function arriba(boton) {
+            let filaActual=boton.parentElement.parentElement;
+            let filaSuperior=filaActual.previousElementSibling;
+
+            if(filaSuperior.id=="encabezados"){
+                alert("No puedes subir mas!!");
+            }else{
+                tabla.insertBefore(filaActual,filaSuperior);
+            }
+        }
+
+        function abajo(boton){
+            let filaActual=boton.parentElement.parentElement;
+            let filaInferior = filaActual.nextElementSibling;
+
+            let ultimaFila = boton.lastElementChild;
+
+            if (filaInferior==ultimaFila) {
+                alert("No puedes bajar mas!!");
+            }else{
+                tabla.insertBefore(filaInferior,filaActual);
+            }
+        }
+    </script>
+</body>
+</html>

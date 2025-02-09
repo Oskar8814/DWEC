@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Datos de Aston Martin F1 transformados
+            var data = google.visualization.arrayToDataTable([
+                ['Carrera', 'Temporada 2023', 'Temporada 2024'],
+                ['Bahréin', 15, 8],
+                ['Arabia Saudí', 14, 6],
+                ['Australia', 15, 10],
+                ['Azerbaiyán', 8, 12],
+                ['Miami', 7, 0],
+                ['Imola', 0, 0],
+                ['Mónaco', 18, 14],
+                ['España', 12, 8],
+                ['Canadá', 18, 14],
+                ['Austria', 6, 0],
+                ['Gran Bretaña', 15, 2],
+                ['Hungría', 6, 0],
+                ['Bélgica', 10, 10],
+                ['Países Bajos', 18, 6],
+                ['Italia', 4, 0],
+                ['Singapur', 0, 0],
+                ['Japón', 1, 0],
+                ['Catar', 6, 0],
+                ['EEUU', 0, 8],
+                ['México', 0, 0],
+                ['Brasil', 3, 0],
+                ['Abu Dabi', 4, 2]
+            ]);
+
+            // Opciones de configuración del gráfico
+            var options = {
+                title: 'Aston Martin F1: Temporadas 2023 vs 2024',
+                hAxis: { title: 'Carrera', titleTextStyle: { color: '#333' } },
+                vAxis: { title: 'Puntos', minValue: 0 },
+                chartArea: { width: '70%', height: '70%' },
+                legend: { position: 'top' }
+            };
+
+            // Dibujar el gráfico
+            var chart = new google.visualization.AreaChart(
+                document.getElementById('chart_div')
+            );
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body style="margin-left: 3rem;">
+    <h1>Aston Martin F1 Points: Temporadas 2023 vs 2024</h1>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+</body>
+
+</html>
+
+apps-fileview.texmex_20241212.01_p1
+graficoAstonMartin.html
+Mostrando graficoAstonMartin.html.

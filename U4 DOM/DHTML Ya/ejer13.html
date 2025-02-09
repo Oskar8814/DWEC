@@ -1,0 +1,35 @@
+<!-- 13. Crear y agregar un nodo de tipo elemento (createElement - appendChild)
+Problema:Confeccionar una página que contenga una lista de tipo (ul) y no defina marcas de tipo (li) inicialmente.
+Luego al presionar un botón agregar dos marcas de tipo (li) con sus respectivos textos. Luego de presionar una vez el botón no permitir agregar más elementos (li). -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+</head>
+<body>
+    <script>
+        function agregar() {
+            let etiqueta = document.createElement('li');
+            let etiqueta2 = document.createElement('li');
+            let contenido = document.createTextNode('Texto');
+            let contenido2 = document.createTextNode('Texto2');
+            
+            etiqueta.appendChild(contenido);
+            etiqueta2.appendChild(contenido2);
+
+            let myUl = document.getElementById("lista");
+
+            if (myUl.children.length<2) {
+                myUl.appendChild(etiqueta);
+                myUl.appendChild(etiqueta2);
+            }
+        }
+    </script>
+    
+    <ul id="lista"></ul>
+    <input type="button" onclick="agregar()" value="Añadir">
+</body>
+</html>

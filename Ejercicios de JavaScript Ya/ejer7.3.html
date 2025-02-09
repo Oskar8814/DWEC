@@ -1,0 +1,33 @@
+<!-- Se ingresa por teclado un número positivo de uno o dos dígitos (1..99) mostrar un mensaje indicando si el número tiene uno o dos dígitos 
+(recordar de convertir a entero con parseInt para preguntar posteriormente por una variable entera). 
+Tener en cuenta qué condición debe cumplirse para tener dos dígitos un número entero.  -->
+<!-- Apartado 3) Preparar el programa para que se pueda introducir un número de uno a tres dígitos (1 - 999),
+lo convierta a un entero e indique si el número tiene 1, 2 o 3 dígitos -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cantidad de dígitos</h1>
+    <div id="contenido"></div>
+    <script>
+        let numero = parseInt(prompt("Introduce un número entre 1 y 999: "));
+
+        if (numero<10){
+            volcarTextoWeb("El número " + numero + " tiene 1 dígito.");
+        }else if (numero>=10 && numero<= 99){
+            volcarTextoWeb("El número " + numero + " tiene 2 dígitos.");
+        }else if (numero>=100){
+            volcarTextoWeb("El número " + numero + " tiene 3 dígitos.");
+        }
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

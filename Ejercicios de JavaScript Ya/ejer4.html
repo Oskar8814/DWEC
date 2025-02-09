@@ -1,0 +1,32 @@
+<!-- Confeccionar un programa que permita cargar el nombre de un usuario y su mail por teclado. Mostrar posteriormente los datos en la página HTML.-->
+<!-- 4. Modifica el programa para que también se pueda introducir los siguientes datos del usuario: DNI, edad y fecha de nacimiento. 
+    Estos nuevos datos también se deberán volcar a la página web.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Datos del Usuario</h1>
+    <div id="contenido"></div>
+    <script>
+        let nombre = prompt("Introduce tu nombre de usuario");
+        let mail = prompt("Introduce tu email");
+        let dni = prompt ("Introduce tu DNI");
+        let edad = prompt("Introduce tu edad");
+        let fecha = prompt ("Introduce tu fecha de nacimiento");
+
+        volcarTextoWeb("Usuario: " + nombre)
+        volcarTextoWeb("email: " + mail)
+        volcarTextoWeb("dni: " + dni)
+        volcarTextoWeb("edad: " + edad)
+        volcarTextoWeb("Fecha de Nacimiento: " + fecha)
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

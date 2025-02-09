@@ -1,0 +1,49 @@
+<!-- Desarrollar un programa que permita cargar 5 números enteros y luego nos informe cuántos valores fueron pares y cuántos impares.
+Emplear el operador "%" en la condición de la estructura condicional.
+
+	if (valor%2==0)
+
+El operador "%" retorna el resto de la división valor / 2. Por ejemplo: 12 % 2, retorna 0; 13 % 2, retorna 1, porque el resto de dividir 13 en 2 es 1.  -->
+<!-- Apartado 7) Prepara el programa para que calcule cuántos valores son divisibles entre 3 y cuántos no -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contador de pares/impares y divisibles entre 3 </h1>
+    <div id="contenido"></div>
+    <script>
+        let par = 0;
+        let impar = 0;
+        let div3 = 0;
+        let noDiv3=0;
+
+        for(let i=0; i<5; i++){
+            let n = parseInt(prompt(`Introduce el ${i+1} número`));
+            if(n%2==0){
+                par++;
+            }else {
+                impar++;
+            }
+
+            if(n%3==0){
+                div3++;
+            }else{
+                noDiv3++;
+            }
+        }
+
+        volcarTextoWeb("Cantidad de números pares: " + par);
+        volcarTextoWeb("Cantidad de números impares: " + impar);
+        volcarTextoWeb("Cantidad de números divisibles entre 3: " + div3);
+        volcarTextoWeb("Cantidad de números no divisibles entre 3: " + noDiv3);
+
+        function volcarTextoWeb(texto){
+			document.querySelector("#contenido").insertAdjacentHTML('beforeend',`<p>${texto}</p>`);
+		}
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- Modificar el segundo problema resuelto (las casillas de la tabla que cambian el color cuando ingresamos con el mouse)
+para permitir llamar mediante hipervínculos a distintos programas que administran web-mail (gmail, hotmail y yahoo) -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <td><a onMouseOver="abrirWeb(this)" onMouseOut="pintar(this,'#fff')" class="web" href="https://www.google.com/">Google</a></td>
+            <td><a onMouseOver="abrirWeb(this)" onMouseOut="pintar(this,'#fff')" class="web" href="https://es.wikipedia.org/wiki/Wikipedia:Portada">wikipedia</a></td>
+            <td><a onMouseOver="abrirWeb(this)" onMouseOut="pintar(this,'#fff')" class="web" href="https://iesruizgijon.es/">IesRuizGijón</a></td>
+        </tr>
+    </table>
+
+    <script>
+        function abrirWeb(enlace) {
+            const href = enlace.getAttribute("href");
+            const myWindow = window.open(href, "", "width=500, height=500");
+            myWindow.blur();
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
