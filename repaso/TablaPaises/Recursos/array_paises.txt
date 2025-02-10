@@ -1,0 +1,7 @@
+		let paises = [
+			{ nombre: 'Francia', capital: 'París', datos: { gobierno: 'República', habitantes: 67407241, idioma: 'francés' }, imagen: 'imagenes/france.png' },
+			{ nombre: 'Alemania', capital: 'Berlín', datos: { gobierno: 'República federal', habitantes: 83149300, idioma: 'alemán' }, imagen: 'imagenes/germany.png' },
+			{ nombre: 'Italy', capital: 'Roma', datos: { gobierno: 'República parlamentaria', habitantes: 60257566, idioma: 'italiano' }, imagen: 'imagenes/italy.png' },
+			{ nombre: 'Portugal', capital: 'Lisboa', datos: { gobierno: 'República unitaria', habitantes: 10295909, idioma: 'portugués' }, imagen: 'imagenes/portugal.png' },
+			{ nombre: 'España', capital: 'Madrid', datos: { gobierno: 'Monarquía parlamentaria', habitantes: 47450795, idioma: 'español' }, imagen: 'imagenes/spain.png' },
+		];
