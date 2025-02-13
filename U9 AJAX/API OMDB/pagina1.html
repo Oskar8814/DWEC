@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            border: 2px solid lightslategray;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        img{
+            height: 150px;
+        }
+
+        th {
+            background-color: darkgray;
+            color: white;
+        }
+        td{
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Color de fondo alternado para las filas */
+        }
+    </style>
+    <script src="funciones.js"></script>
+</head>
+
+<body>
+    <h1>Consumir API OMDB</h1>
+    <form action="" method="get" id="formulario">
+        <label for="buscar">Titulo:</label>
+        <input type="text" name="titulo" id="titulo">
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="movie">Pelicula</option>
+            <option value="series">Serie</option>
+            <option value="episode">Episodio</option>
+        </select>
+        <input type="button" value="Buscar" onclick="enviarPeticionAJAX();">
+    </form>
+
+    <div id="resultados"></div>
+</body>
+
+</html>
