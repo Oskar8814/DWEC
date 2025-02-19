@@ -9,7 +9,7 @@ function enviarPeticionAJAX() {
     // console.log(id);
 
     conexion1 = new XMLHttpRequest(); //Crear el objeto ajax
-    conexion1.open("GET",`http://www.omdbapi.com/?i=tt3896198&apikey=526b77bd&s=${titulo}&type=${id}`,true);
+    conexion1.open("GET",`https://www.omdbapi.com/?i=tt3896198&apikey=526b77bd&s=${titulo}&type=${id}`,true);
     conexion1.timeout = 3000; // Tiempo máximo de espera del API 3sg
     conexion1.addEventListener("readystatechange", procesarDatos); // Añadimos el callback
     //conexion1.addEventListener("timeout", tiempoVencido);  El evento ontimeout se dispara cuando se ha superado el tiempo de espera
