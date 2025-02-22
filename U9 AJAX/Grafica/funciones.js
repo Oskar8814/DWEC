@@ -103,7 +103,7 @@ function cargarDatosLluvia(e){
     const idCiudad = document.getElementById('ubicacion').value;
     const año = document.getElementById('anio').value;
     
-    if (idCiudad && año) { 
+    if (idCiudad !== "0" && año !== "0") { 
         conexion1 = new XMLHttpRequest() //Crea el obj ajax
         conexion1.open("GET", `carga_lluviajson.php?ciudad=${idCiudad}&anio=${año}`, true);
         conexion1.timeout = 3000;//Tiempo de espera a la api
