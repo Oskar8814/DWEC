@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,tr,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table{
+            margin-top: 10px;
+        }
+    </style>    
+</head>
+<body>
+    <h1>Precipitaciones</h1>
+    
+    <form action="" method="get" id="formComunidad">
+        <label for="ubicacion">Seleccione la Ciudad:</label>
+        <select name="ubicacion" id="ubicacion"></select>
+        <br>
+        <label for="anio">Seleccione el Año a consultar:</label>
+        <select name="anio" id="anio"></select>
+    </form>
+    <div id="resultados"></div>
+    <!-- <div id="piechart_3d" style="width: 900px; height: 500px;"></div> -->
+    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script src="funciones.js"></script> -->
+    <script src="funciones2.js"></script>
+</body>
+</html>
