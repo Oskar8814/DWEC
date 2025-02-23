@@ -63,7 +63,7 @@ function cargarDatosAños() {
             let datosAnios = JSON.parse(conexion2.responseText);
             let optionCode2 = "<option value='0'>Seleccionar...</option>";
             for (const element2 of datosAnios) {
-                optionCode2 += `<option value='${element2.año}'>${element2.año}</option>`;
+                optionCode2 += `<option value='${element2}'>${element2}</option>`;
             }
             selectA.innerHTML = optionCode2;
             selectA.addEventListener("change", cargarDatosLluvia);

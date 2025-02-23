@@ -18,7 +18,7 @@ $seleccion = "SELECT DISTINCT año FROM lluvias";
 $consulta = $conexion->query($seleccion);
 
 while ($registro = $consulta->fetchObject()) {
-    $vec[]=new Lluvias(0,$registro->año,"",0,0);
+    $vec[]=$registro->año;
 }
 
 header('Content-Type: application/json; charset=utf-8');
