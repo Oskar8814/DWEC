@@ -14,7 +14,7 @@ function cargarDirectores() {
       }
     }
   };
-  xhr.open("GET", "cargar_directores_29530689T.php", true);
+  xhr.open("GET", "cargar_directores.php", true);
   xhr.send();
 }
 
@@ -59,7 +59,7 @@ function cargarPeliculas() {
             }
         }
     };
-  xhr.open("POST", "cargar_peliculas_29530689T.php", true);
+  xhr.open("POST", "cargar_peliculas.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("CodiDirec=" + director);
 }
